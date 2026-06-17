@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Boss Guides & Weaknesses | Resident Evil Requiem RE9</title>
+<meta name="description" content="Complete boss guide for Resident Evil Requiem (RE9). All boss weak points, attack patterns, strategies for both Normal and Insanity difficulty, and drop rewards.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blood:#8B0000; --blood-dim:#5a0000; --rust:#C0392B; --amber:#E8A000;
+    --bone:#D4C9B0; --ash:#9A9590; --ink:#0D0C0B; --ink-mid:#1A1917;
+    --ink-light:#252320; --ink-border:#2E2C29; --text:#C8C2B8; --text-dim:#7A746E;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--ink); color: var(--text); font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; }
+  body::before { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.05) 2px, rgba(0,0,0,0.05) 4px); pointer-events: none; z-index: 1000; }
+
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(13,12,11,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--ink-border); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.12em; color: var(--bone); text-decoration: none; }
+  .nav-logo span { color: var(--blood); }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: var(--ash); text-decoration: none; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--bone); }
+  .nav-links a.active { color: var(--amber); }
+
+  .page-header { padding: 56px 48px 48px; background: linear-gradient(180deg, var(--ink-mid) 0%, var(--ink) 100%); border-bottom: 1px solid var(--ink-border); position: relative; overflow: hidden; }
+  .page-header::before { content: 'BOSSES'; position: absolute; right: 48px; top: 50%; transform: translateY(-50%); font-family: 'Bebas Neue', sans-serif; font-size: 120px; letter-spacing: 0.05em; color: rgba(255,255,255,0.02); pointer-events: none; line-height: 1; }
+  .breadcrumb { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-dim); letter-spacing: 0.1em; margin-bottom: 16px; }
+  .breadcrumb a { color: var(--blood); text-decoration: none; }
+  .page-title { font-family: 'Bebas Neue', sans-serif; font-size: 56px; letter-spacing: 0.03em; color: var(--bone); line-height: 1; margin-bottom: 10px; }
+  .page-title span { color: var(--blood); }
+  .page-desc { font-size: 14px; color: var(--text-dim); max-width: 560px; line-height: 1.7; }
+
+  .jump-nav { background: var(--ink-mid); border-bottom: 1px solid var(--ink-border); padding: 14px 48px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .jump-link { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); text-decoration: none; padding: 5px 12px; border: 1px solid var(--ink-border); transition: all 0.2s; white-space: nowrap; }
+  .jump-link:hover { color: var(--bone); border-color: var(--blood-dim); background: var(--ink-light); }
+
+  .content { max-width: 960px; margin: 0 auto; padding: 60px 48px; }
+
+  /* BOSS CARD */
+  .boss-card {
+    background: var(--ink-mid);
+    border: 1px solid var(--ink-border);
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .boss-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--blood);
+  }
+  .boss-card.optional::before { background: #4a5a7a; }
+
+  .boss-top {
+    padding: 28px 28px 24px 36px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    align-items: start;
+    border-bottom: 1px solid var(--ink-border);
+  }
+  .boss-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blood);
+    margin-bottom: 8px;
+  }
+  .boss-card.optional .boss-eyebrow { color: #6a7a9a; }
+  .boss-name { font-family: 'Bebas Neue', sans-serif; font-size: 38px; letter-spacing: 0.03em; color: var(--bone); line-height: 1; margin-bottom: 6px; }
+  .boss-subtitle { font-size: 13px; color: var(--text-dim); margin-bottom: 12px; }
+  .boss-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .boss-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border: 1px solid var(--ink-border); color: var(--text-dim); }
+  .boss-tag.char-leon { border-color: #2a4a7a; color: #6a8ab5; }
+  .boss-tag.char-grace { border-color: var(--blood-dim); color: #aa4040; }
+
+  .boss-meta { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+  .meta-pill { font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 4px 10px; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+  .meta-diff-normal { border: 1px solid #2d5a2d; color: #4CAF50; }
+  .meta-diff-hard { border: 1px solid #5a3a20; color: #E8A000; }
+  .meta-diff-boss { border: 1px solid #5a2020; color: var(--rust); }
+
+  .boss-body { padding: 24px 28px 24px 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+
+  .boss-section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+  .boss-section-label::after { content: ''; flex: 1; height: 1px; background: var(--ink-border); }
+
+  .weakness-list { display: flex; flex-direction: column; gap: 6px; }
+  .weakness-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; padding: 8px 10px; background: rgba(139,0,0,0.06); border: 1px solid rgba(139,0,0,0.15); }
+  .weakness-icon { font-size: 14px; flex-shrink: 0; }
+  .weakness-text { color: var(--text); }
+  .weakness-text strong { color: var(--bone); }
+
+  .drop-list { display: flex; flex-direction: column; gap: 6px; }
+  .drop-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-dim); padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+  .drop-item::before { content: '▸'; color: var(--amber); font-size: 10px; }
+
+  .strategy-block { grid-column: 1 / -1; }
+  .strategy-text { font-size: 13px; color: var(--text-dim); line-height: 1.7; }
+  .strategy-text p { margin-bottom: 10px; }
+  .strategy-text strong { color: var(--bone); }
+  .strategy-text .phase { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blood); border: 1px solid var(--blood-dim); padding: 1px 6px; margin-right: 8px; }
+
+  .tip-box { background: rgba(0,60,0,0.1); border: 1px solid #2a4a2a; padding: 12px 16px; margin-top: 12px; display: flex; gap: 10px; }
+  .tip-text { font-size: 12px; color: var(--text-dim); line-height: 1.6; }
+  .tip-text strong { color: #4CAF50; }
+
+  .warning-box { background: rgba(139,0,0,0.1); border: 1px solid var(--blood-dim); padding: 12px 16px; margin-bottom: 20px; display: flex; gap: 10px; }
+  .warning-text { font-size: 13px; color: var(--bone); line-height: 1.6; }
+  .warning-text strong { color: var(--rust); }
+
+  .section-divider { height: 1px; background: linear-gradient(90deg, var(--blood-dim), transparent); margin: 48px 0; }
+
+  .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+  .section-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blood); border: 1px solid var(--blood-dim); padding: 3px 8px; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.04em; color: var(--bone); }
+  .optional-section .section-tag { color: #6a7a9a; border-color: #3a4a5a; }
+
+  footer { background: var(--ink-mid); border-top: 1px solid var(--ink-border); padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.12em; color: var(--ash); text-decoration: none; }
+  .footer-logo span { color: var(--blood-dim); }
+  .footer-note { font-size: 11px; color: var(--text-dim); }
+
+  @media (max-width: 768px) {
+    .page-header, .content { padding-left: 24px; padding-right: 24px; }
+    .jump-nav { padding: 12px 24px; }
+    .boss-body { grid-template-columns: 1fr; }
+    .boss-top { grid-template-columns: 1fr; }
+    .boss-meta { flex-direction: row; align-items: flex-start; }
+    footer { flex-direction: column; gap: 12px; }
+    nav { padding: 0 16px; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">RE<span>9</span>GUIDE</a>
+  <ul class="nav-links">
+    <li><a href="walkthrough.html">Walkthrough</a></li>
+    <li><a href="puzzles.html">Puzzles & Codes</a></li>
+    <li><a href="bosses.html" class="active">Bosses</a></li>
+    <li><a href="collectibles.html">Collectibles</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">RE9 Guide</a> › Boss Guide</div>
+  <h1 class="page-title">Boss Guide &<br><span>Weaknesses</span></h1>
+  <p class="page-desc">Every boss in Resident Evil Requiem — weak points, kill strategies, and drop rewards. Stop wasting ammo on fake openings. Covers both Leon and Grace campaigns.</p>
+</div>
+
+<nav class="jump-nav">
+  <a href="#chunk" class="jump-link">Chunk</a>
+  <a href="#mr-x" class="jump-link">Mr. X</a>
+  <a href="#super-tyrant" class="jump-link">Super Tyrant</a>
+  <a href="#emily" class="jump-link">Mutated Emily</a>
+  <a href="#keeper" class="jump-link">The Keeper</a>
+  <a href="#optional" class="jump-link">Optional Bosses</a>
+</nav>
+
+<div class="content">
+
+  <div class="warning-box">
+    <span>⚠️</span>
+    <div class="warning-text"><strong>Ammo economy matters.</strong> RE9 punishes ammo dumps on incorrect phases. Each entry below notes exactly when the boss is vulnerable. Outside those windows, use melee/hatchet or dodge.</div>
+  </div>
+
+  <!-- MAIN BOSSES HEADER -->
+  <div class="section-header">
+    <span class="section-tag">Main Story</span>
+    <h2 class="section-title">Story Bosses</h2>
+  </div>
+
+  <!-- CHUNK -->
+  <div class="boss-card" id="chunk">
+    <div class="boss-top">
+      <div>
+        <div class="boss-eyebrow">Boss #1 · Wrenwood Hotel</div>
+        <div class="boss-name">CHUNK</div>
+        <div class="boss-subtitle">Heavily mutated former security guard. First major boss encounter.</div>
+        <div class="boss-tags">
+          <span class="boss-tag char-leon">Leon</span>
+          <span class="boss-tag char-grace">Grace (alternate method)</span>
+          <span class="boss-tag">2 Phases</span>
+        </div>
+      </div>
+      <div class="boss-meta">
+        <span class="meta-pill meta-diff-normal">Moderate Difficulty</span>
+        <span class="meta-pill meta-diff-boss">Recommended: Shotgun</span>
+      </div>
+    </div>
+    <div class="boss-body">
+      <div>
+        <div class="boss-section-label">Weak Points</div>
+        <div class="weakness-list">
+          <div class="weakness-item">
+            <span class="weakness-icon">🎯</span>
+            <div class="weakness-text"><strong>Phase 1:</strong> Exposed chest cavity — shoot during his charge wind-up animation</div>
+          </div>
+          <div class="weakness-item">
+            <span class="weakness-icon">🎯</span>
+            <div class="weakness-text"><strong>Phase 2:</strong> Glowing mutation on his back — must circle around or use flash grenades to force him to turn</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="boss-section-label">Drops & Rewards</div>
+        <div class="drop-list">
+          <div class="drop-item">Hatchet: Mortal Edge (Leon) — unequip current hatchet to equip</div>
+          <div class="drop-item">Chunk's Keycard — required to exit the Hotel basement</div>
+          <div class="drop-item">3× Shotgun Shells (scattered around arena)</div>
+        </div>
+      </div>
+      <div class="strategy-block">
+        <div class="boss-section-label">Strategy</div>
+        <div class="strategy-text">
+          <p><span class="phase">Phase 1</span> Stay mobile. Chunk telegraphs his charge 1.5 seconds before executing — the window to shoot the chest is during the "pull back" animation. Two shotgun blasts or four rifle shots end Phase 1.</p>
+          <p><span class="phase">Phase 2</span> He gains a back mutation. Use Flash Grenades or shoot his legs to stagger him and force a 180 — then dump shotgun ammo into the glowing mass. If playing Grace, inject 3 Hemolytic Injectors when the back mutation is exposed to finish the fight instantly.</p>
+        </div>
+        <div class="tip-box">
+          <div class="tip-text"><strong>Grace players:</strong> The 3 Hemolytic Injector method skips the Phase 2 damage check entirely. Craft them before the fight by killing the 3 zombies in the hallway preceding the boss room.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MR. X -->
+  <div class="boss-card" id="mr-x">
+    <div class="boss-top">
+      <div>
+        <div class="boss-eyebrow">Boss #2 · Raccoon City — RPD Chase + Final Encounter</div>
+        <div class="boss-name">MR. X</div>
+        <div class="boss-subtitle">Tyrant-series B.O.W. Pursues Leon throughout the RPD. Two distinct fight phases.</div>
+        <div class="boss-tags">
+          <span class="boss-tag char-leon">Leon only</span>
+          <span class="boss-tag">Chase Phase</span>
+          <span class="boss-tag">Arena Phase</span>
+        </div>
+      </div>
+      <div class="boss-meta">
+        <span class="meta-pill meta-diff-hard">High Difficulty</span>
+        <span class="meta-pill meta-diff-boss">Save: Explosive Rounds</span>
+      </div>
+    </div>
+    <div class="boss-body">
+      <div>
+        <div class="boss-section-label">Weak Points</div>
+        <div class="weakness-list">
+          <div class="weakness-item">
+            <span class="weakness-icon">🎯</span>
+            <div class="weakness-text"><strong>Chase Phase:</strong> No real weak point — do NOT dump ammo during the chase. He cannot be stopped, only slowed briefly.</div>
+          </div>
+          <div class="weakness-item">
+            <span class="weakness-icon">🎯</span>
+            <div class="weakness-text"><strong>Arena Phase:</strong> Mouth when he opens it during punish windows. Cyst on his back while downed.</div>
+          </div>
+          <div class="weakness-item">
+            <span class="weakness-icon">💥</span>
+            <div class="weakness-text"><strong>Environmental:</strong> Explosive canisters around the arena deal massive damage when he crowds you</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="boss-section-label">Drops & Rewards</div>
+        <div class="drop-list">
+          <div class="drop-item">RPD Parking Garage Key</div>
+          <div class="drop-item">Requiem Rounds ×4 (high-tier ammo)</div>
+          <div class="drop-item">Story progression: unlocks East Raccoon City</div>
+        </div>
+      </div>
+      <div class="strategy-block">
+        <div class="boss-section-label">Strategy</div>
+        <div class="strategy-text">
+          <p><span class="phase">Chase Phase</span> Do not waste ammo. Run until the upper-level arena opens. Use ladders to create distance — Mr. X is slow on stairs. Collect all ammo from side rooms while running, there is no penalty for exploring.</p>
+          <p><span class="phase">Arena Phase</span> Use ladders to force Mr. X to change his movement trajectory, buying you angles to shoot the mouth during his attack animation. Explosive canisters in the arena corners deal roughly 3× normal gun damage — kite him near them when he's at half health.</p>
+          <p>When he goes to one knee (downed), sprint around and empty into the back cyst before he rises. This is your highest-damage window of the fight.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUPER TYRANT -->
+  <div class="boss-card" id="super-tyrant">
+    <div class="boss-top">
+      <div>
+        <div class="boss-eyebrow">Boss #3 · Outside RPD — Final Tyrant Form</div>
+        <div class="boss-name">SUPER TYRANT</div>
+        <div class="boss-subtitle">Mutated final form of Mr. X. Open-area fight outside the RPD building.</div>
+        <div class="boss-tags">
+          <span class="boss-tag char-leon">Leon</span>
+          <span class="boss-tag">3 Phases</span>
+          <span class="boss-tag">Time-Sensitive</span>
+        </div>
+      </div>
+      <div class="boss-meta">
+        <span class="meta-pill meta-diff-boss">High Difficulty</span>
+        <span class="meta-pill meta-diff-boss">Use: Magnum + Rockets</span>
+      </div>
+    </div>
+    <div class="boss-body">
+      <div>
+        <div class="boss-section-label">Weak Points</div>
+        <div class="weakness-list">
+          <div class="weakness-item">
+            <span class="weakness-icon">🎯</span>
+            <div class="weakness-text"><strong>Phases 1–2:</strong> The exposed heart on his chest. Always centered — aim straight on.</div>
+          </div>
+          <div class="weakness-item">
+            <span class="weakness-icon">🎯</span>
+            <div class="weakness-text"><strong>Phase 3:</strong> After the heart is shielded — shoot the arm blade until it breaks, then heart is exposed again</div>
+          </div>
+          <div class="weakness-item">
+            <span class="weakness-icon">🚁</span>
+            <div class="weakness-text"><strong>Event trigger:</strong> At 25% health, a helicopter airdrop provides Rocket Launcher ×1 — this is your kill shot</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="boss-section-label">Drops & Rewards</div>
+        <div class="drop-list">
+          <div class="drop-item">Raccoon City Survivor Badge (key story item)</div>
+          <div class="drop-item">ARK Access Code — required to advance</div>
+          <div class="drop-item">Achievement: "Terminator" unlocked</div>
+        </div>
+      </div>
+      <div class="strategy-block">
+        <div class="boss-section-label">Strategy</div>
+        <div class="strategy-text">
+          <p><span class="phase">Phase 1–2</span> Save the Magnum ammo you collected from the RPD Evidence Locker safe. Dump Magnum rounds directly into the chest heart — this is the most efficient DPS in the game. Keep moving laterally; the Tyrant's grab attack is a one-shot on Insanity difficulty.</p>
+          <p><span class="phase">Phase 3</span> He shields the heart with his arm blade. Shoot the blade with any weapon until it shatters (takes ~12 handgun rounds). Heart exposed again — finish with Magnum.</p>
+          <p><span class="phase">Rocket Finish</span> At 25% HP the helicopter event triggers. Pick up the Rocket Launcher immediately — it despawns after 30 seconds. One rocket to the chest ends the fight.</p>
+        </div>
+        <div class="tip-box">
+          <div class="tip-text"><strong>Insanity tip:</strong> His grab deals instant death. Prioritize dodging grabs over dealing damage. It's faster to spend 20 extra seconds kiting than to restart from a typewriter save.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EMILY -->
+  <div class="boss-card" id="emily">
+    <div class="boss-top">
+      <div>
+        <div class="boss-eyebrow">Boss #4 · ARK — Scripted Encounter</div>
+        <div class="boss-name">MUTATED EMILY</div>
+        <div class="boss-subtitle">Mandatory scripted encounter. Story-critical decision point — affects ending.</div>
+        <div class="boss-tags">
+          <span class="boss-tag char-leon">Leon</span>
+          <span class="boss-tag">Scripted</span>
+          <span class="boss-tag">Ending Branch</span>
+        </div>
+      </div>
+      <div class="boss-meta">
+        <span class="meta-pill meta-diff-normal">Low Difficulty</span>
+        <span class="meta-pill meta-diff-boss">⚠ Ending Impact</span>
+      </div>
+    </div>
+    <div class="boss-body">
+      <div class="strategy-block">
+        <div class="boss-section-label">Strategy & Story Note</div>
+        <div class="strategy-text">
+          <p>This is a scripted encounter with no gameplay punishment. When prompted, shoot mutated Emily to progress — do not hesitate or skip the prompt.</p>
+          <p>The important detail: On the <strong>Release Elpis ending path</strong>, Leon makes clear he did not hit her vitals, and the ending shows Emily survived and was rescued. Shooting Emily here does not lock you into the bad ending — it is required for the good one.</p>
+        </div>
+        <div class="warning-box">
+          <div class="warning-text"><strong>Common mistake:</strong> Players hesitate or reload a save thinking this causes the bad ending. It does not. You must shoot Emily to proceed. The ending is determined by the Final Puzzle in the ARK Core, not this encounter.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE KEEPER -->
+  <div class="boss-card" id="keeper">
+    <div class="boss-top">
+      <div>
+        <div class="boss-eyebrow">Boss #5 · Rhodes Hill — Grace Campaign</div>
+        <div class="boss-name">THE KEEPER</div>
+        <div class="boss-subtitle">Close-quarters duel. Former staff member turned B.O.W. Parry-centric fight.</div>
+        <div class="boss-tags">
+          <span class="boss-tag char-grace">Grace only</span>
+          <span class="boss-tag">Parry Mechanic</span>
+          <span class="boss-tag">2 Phases</span>
+        </div>
+      </div>
+      <div class="boss-meta">
+        <span class="meta-pill meta-diff-hard">Hard</span>
+        <span class="meta-pill meta-diff-boss">Required: Hatchet</span>
+      </div>
+    </div>
+    <div class="boss-body">
+      <div>
+        <div class="boss-section-label">Weak Points</div>
+        <div class="weakness-list">
+          <div class="weakness-item">
+            <span class="weakness-icon">🎯</span>
+            <div class="weakness-text"><strong>Phase 1:</strong> After a successful parry — 1-second answer window with the hatchet. Sharpen hatchet during every lull.</div>
+          </div>
+          <div class="weakness-item">
+            <span class="weakness-icon">🎯</span>
+            <div class="weakness-text"><strong>Phase 2:</strong> Left side when he favors right-hand attacks. His left is always exposed during 3-hit combo finishers.</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="boss-section-label">Drops & Rewards</div>
+        <div class="drop-list">
+          <div class="drop-item">Keeper's Key — unlocks Sub-Basement area</div>
+          <div class="drop-item">Blood Vial ×6 (high-value crafting resource)</div>
+          <div class="drop-item">File: The Keeper's Journal</div>
+        </div>
+      </div>
+      <div class="strategy-block">
+        <div class="boss-section-label">Strategy</div>
+        <div class="strategy-text">
+          <p><span class="phase">Phase 1</span> This is a close-quarters duel, not a traditional arena fight. Parry is your primary tool — the window is tight (0.3 seconds before impact). After a successful parry, immediately answer with the hatchet. Sharpen the hatchet every time The Keeper pauses to reposition.</p>
+          <p><span class="phase">Phase 2</span> He begins mixing unparryable grab attacks — these are telegraphed by a brief shoulder dip. Dodge right on the shoulder dip, then punish his left side during the 3-hit combo finisher. Gun ammo is inefficient here; hatchet damage is significantly higher per action.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- OPTIONAL BOSSES -->
+  <div class="optional-section">
+    <div class="section-header">
+      <span class="section-tag">Optional</span>
+      <h2 class="section-title">Optional Bosses</h2>
+    </div>
+
+    <div class="boss-card optional" id="optional">
+      <div class="boss-top">
+        <div>
+          <div class="boss-eyebrow">Optional · Wrenwood Hotel Basement</div>
+          <div class="boss-name">THE AMALGAM</div>
+          <div class="boss-subtitle">Fused mass of multiple infected bodies. Not required but drops valuable upgrade material.</div>
+          <div class="boss-tags">
+            <span class="boss-tag">Optional</span>
+            <span class="boss-tag char-leon">Leon / Grace</span>
+            <span class="boss-tag">High Reward</span>
+          </div>
+        </div>
+        <div class="boss-meta">
+          <span class="meta-pill meta-diff-hard">Medium-Hard</span>
+        </div>
+      </div>
+      <div class="boss-body">
+        <div>
+          <div class="boss-section-label">Weak Points & Drops</div>
+          <div class="weakness-list">
+            <div class="weakness-item">
+              <span class="weakness-icon">🎯</span>
+              <div class="weakness-text">Exposed vertebrae on the back. Only visible when it rears up — shoot during the 2-second window.</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="boss-section-label">Drops</div>
+          <div class="drop-list">
+            <div class="drop-item">Crimson Skull Gem (sell for 12,000 CP or trade for upgrade)</div>
+            <div class="drop-item">Infected Blood ×8 (Grace's crafting resource)</div>
+          </div>
+        </div>
+        <div class="strategy-block">
+          <div class="boss-section-label">Why Fight It?</div>
+          <div class="strategy-text">
+            <p>The Crimson Skull Gem sells for 12,000 CP at the merchant — equivalent to roughly 3 weapon upgrades. On Insanity, this fight is harder but the gem value remains the same. Recommended on first playthrough.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  <a href="index.html" class="footer-logo">RE<span>9</span>GUIDE</a>
+  <div class="footer-note">Fan-made guide · Not affiliated with Capcom · Resident Evil Requiem © 2026 Capcom Co., Ltd.</div>
+</footer>
+
+</body>
+</html>

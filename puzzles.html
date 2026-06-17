@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Puzzle Solutions & Safe Codes | Resident Evil Requiem (RE9) Guide</title>
+<meta name="description" content="Every safe code and puzzle solution in Resident Evil Requiem RE9. Includes all combinations for Normal and Insanity difficulty, Roulette Wheel, Quartz Door, and final puzzle.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blood:#8B0000; --blood-dim:#5a0000; --rust:#C0392B; --amber:#E8A000;
+    --bone:#D4C9B0; --ash:#9A9590; --ink:#0D0C0B; --ink-mid:#1A1917;
+    --ink-light:#252320; --ink-border:#2E2C29; --text:#C8C2B8; --text-dim:#7A746E;
+    --green:#2d7a3a; --green-bright:#4CAF50;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--ink); color: var(--text); font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.05) 2px, rgba(0,0,0,0.05) 4px);
+    pointer-events: none; z-index: 1000;
+  }
+
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(13,12,11,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--ink-border); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.12em; color: var(--bone); text-decoration: none; }
+  .nav-logo span { color: var(--blood); }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: var(--ash); text-decoration: none; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--bone); }
+  .nav-links a.active { color: var(--amber); }
+
+  /* PAGE HEADER */
+  .page-header {
+    padding: 56px 48px 48px;
+    background: linear-gradient(180deg, var(--ink-mid) 0%, var(--ink) 100%);
+    border-bottom: 1px solid var(--ink-border);
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before {
+    content: 'CODES';
+    position: absolute; right: 48px; top: 50%; transform: translateY(-50%);
+    font-family: 'Bebas Neue', sans-serif; font-size: 140px; letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.02); pointer-events: none; line-height: 1;
+  }
+  .breadcrumb { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-dim); letter-spacing: 0.1em; margin-bottom: 16px; }
+  .breadcrumb a { color: var(--blood); text-decoration: none; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .page-title { font-family: 'Bebas Neue', sans-serif; font-size: 56px; letter-spacing: 0.03em; color: var(--bone); line-height: 1; margin-bottom: 10px; }
+  .page-title span { color: var(--blood); }
+  .page-desc { font-size: 14px; color: var(--text-dim); max-width: 560px; line-height: 1.7; }
+  .page-meta { display: flex; gap: 24px; margin-top: 20px; }
+  .meta-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-dim); }
+  .meta-item strong { color: var(--amber); }
+
+  /* JUMP NAV */
+  .jump-nav { background: var(--ink-mid); border-bottom: 1px solid var(--ink-border); padding: 14px 48px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .jump-link { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); text-decoration: none; padding: 5px 12px; border: 1px solid var(--ink-border); transition: all 0.2s; white-space: nowrap; }
+  .jump-link:hover { color: var(--bone); border-color: var(--blood-dim); background: var(--ink-light); }
+
+  /* CONTENT */
+  .content { max-width: 900px; margin: 0 auto; padding: 60px 48px; }
+
+  /* AREA SECTIONS */
+  .area-section { margin-bottom: 72px; }
+  .area-header { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; padding-bottom: 14px; border-bottom: 1px solid var(--ink-border); }
+  .area-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--blood); border: 1px solid var(--blood-dim); padding: 2px 8px; }
+  .area-name { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.04em; color: var(--bone); }
+  .area-char { font-size: 11px; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; margin-left: auto; }
+
+  /* SAFE CARD */
+  .safe-card {
+    background: var(--ink-mid);
+    border: 1px solid var(--ink-border);
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .safe-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--ink-border);
+  }
+  .safe-id { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--blood); letter-spacing: 0.1em; }
+  .safe-name { font-size: 14px; font-weight: 600; color: var(--bone); }
+  .safe-location-tag { font-size: 11px; color: var(--text-dim); }
+  .safe-body { padding: 20px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .diff-block {}
+  .diff-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  .diff-label .badge { padding: 2px 7px; font-family: 'JetBrains Mono', monospace; }
+  .badge-normal { border: 1px solid #2d5a2d; color: var(--green-bright); }
+  .badge-insanity { border: 1px solid #5a2020; color: var(--rust); }
+  .code-display { font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 600; color: var(--amber); letter-spacing: 0.08em; }
+  .safe-note { grid-column: 1 / -1; font-size: 12px; color: var(--text-dim); background: rgba(255,255,255,0.02); padding: 10px 14px; border-left: 2px solid var(--blood-dim); }
+
+  /* PUZZLE CARD */
+  .puzzle-card {
+    background: var(--ink-mid);
+    border: 1px solid var(--ink-border);
+    margin-bottom: 12px;
+  }
+  .puzzle-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--ink-border);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .puzzle-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+  .puzzle-info {}
+  .puzzle-title { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.04em; color: var(--bone); line-height: 1.1; margin-bottom: 4px; }
+  .puzzle-loc { font-size: 12px; color: var(--text-dim); }
+  .puzzle-body { padding: 20px 24px; }
+  .solution-box {
+    background: rgba(139,0,0,0.08);
+    border: 1px solid var(--blood-dim);
+    padding: 16px 20px;
+    margin-bottom: 14px;
+  }
+  .solution-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blood); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+  .solution-value { font-family: 'JetBrains Mono', monospace; font-size: 20px; font-weight: 600; color: var(--amber); letter-spacing: 0.15em; }
+  .solution-sub { font-size: 12px; color: var(--ash); margin-top: 4px; }
+  .puzzle-steps { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+  .puzzle-steps li { font-size: 13px; color: var(--text-dim); display: flex; gap: 10px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+  .step-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--blood-dim); flex-shrink: 0; min-width: 24px; padding-top: 1px; }
+
+  /* WARNING BOX */
+  .warning-box { background: rgba(139,0,0,0.1); border: 1px solid var(--blood-dim); padding: 14px 18px; margin-bottom: 16px; display: flex; gap: 12px; align-items: flex-start; }
+  .warning-icon { font-size: 16px; flex-shrink: 0; }
+  .warning-text { font-size: 13px; color: var(--bone); line-height: 1.6; }
+  .warning-text strong { color: var(--rust); }
+
+  /* TIP BOX */
+  .tip-box { background: rgba(0,60,0,0.12); border: 1px solid #2a4a2a; padding: 14px 18px; margin-bottom: 16px; display: flex; gap: 12px; align-items: flex-start; }
+  .tip-text { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+  .tip-text strong { color: var(--green-bright); }
+
+  /* SECTION DIVIDER */
+  .area-divider { height: 1px; background: linear-gradient(90deg, var(--blood-dim), transparent); margin: 0 0 72px 0; }
+
+  /* FOOTER */
+  footer { background: var(--ink-mid); border-top: 1px solid var(--ink-border); padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.12em; color: var(--ash); text-decoration: none; }
+  .footer-logo span { color: var(--blood-dim); }
+  .footer-note { font-size: 11px; color: var(--text-dim); }
+
+  @media (max-width: 768px) {
+    .page-header { padding: 36px 24px 32px; }
+    .content { padding: 40px 24px; }
+    .jump-nav { padding: 12px 24px; }
+    .safe-body { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 12px; }
+    nav { padding: 0 16px; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">RE<span>9</span>GUIDE</a>
+  <ul class="nav-links">
+    <li><a href="walkthrough.html">Walkthrough</a></li>
+    <li><a href="puzzles.html" class="active">Puzzles & Codes</a></li>
+    <li><a href="bosses.html">Bosses</a></li>
+    <li><a href="collectibles.html">Collectibles</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">RE9 Guide</a> › Puzzles & Safe Codes</div>
+  <h1 class="page-title">All <span>Puzzles</span> &<br>Safe Codes</h1>
+  <p class="page-desc">Every safe combination, puzzle solution, and door code in Resident Evil Requiem — organized by location. Includes Normal and Insanity difficulty variants.</p>
+  <div class="page-meta">
+    <div class="meta-item">Safes: <strong>8+</strong></div>
+    <div class="meta-item">Puzzles: <strong>6</strong></div>
+    <div class="meta-item">Both difficulties: <strong>✓</strong></div>
+  </div>
+</div>
+
+<nav class="jump-nav">
+  <a href="#wrenwood" class="jump-link">Wrenwood Hotel</a>
+  <a href="#rhodes-hill" class="jump-link">Rhodes Hill</a>
+  <a href="#raccoon-city" class="jump-link">Raccoon City</a>
+  <a href="#ark" class="jump-link">The ARK</a>
+  <a href="#special" class="jump-link">Special Puzzles</a>
+</nav>
+
+<div class="content">
+
+  <div class="warning-box">
+    <span class="warning-icon">⚠️</span>
+    <div class="warning-text"><strong>Insanity Difficulty Note:</strong> Safe codes are different on Insanity mode. The combination is normally hidden in a File — but you can open safes before finding the File if you use the codes listed below.</div>
+  </div>
+
+  <!-- WRENWOOD -->
+  <div class="area-section" id="wrenwood">
+    <div class="area-header">
+      <span class="area-num">AREA 01</span>
+      <span class="area-name">Wrenwood Hotel</span>
+      <span class="area-char">Leon · Grace (intro)</span>
+    </div>
+
+    <div class="safe-card">
+      <div class="safe-header">
+        <div>
+          <div class="safe-id">SAFE #1</div>
+          <div class="safe-name">Hotel Lobby Safe</div>
+          <div class="safe-location-tag">Ground Floor, behind the reception counter</div>
+        </div>
+      </div>
+      <div class="safe-body">
+        <div class="diff-block">
+          <div class="diff-label"><span class="badge badge-normal">Normal / Casual</span></div>
+          <div class="code-display">R36 · L08 · R52</div>
+        </div>
+        <div class="diff-block">
+          <div class="diff-label"><span class="badge badge-insanity">Insanity</span></div>
+          <div class="code-display">L44 · R20 · L06</div>
+        </div>
+        <div class="safe-note">💡 Contains: Shotgun Shells ×8 + Handgun Ammo ×12. Grab this before proceeding to the first floor — resources are tight in Wrenwood.</div>
+      </div>
+    </div>
+
+    <div class="puzzle-card">
+      <div class="puzzle-header">
+        <div class="puzzle-icon">🎰</div>
+        <div class="puzzle-info">
+          <div class="puzzle-title">Roulette Wheel Puzzle</div>
+          <div class="puzzle-loc">Wrenwood Hotel · Parlor (Ground Floor)</div>
+        </div>
+      </div>
+      <div class="puzzle-body">
+        <div class="solution-box">
+          <div class="solution-label">Solution</div>
+          <div class="solution-value">RED — BLACK — RED — RED — BLACK</div>
+          <div class="solution-sub">Spin the wheel to match the color sequence shown in the painting above the fireplace</div>
+        </div>
+        <div class="tip-box">
+          <div class="tip-text"><strong>Tip:</strong> The painting shows the sequence as dots. Left-to-right reading order. Red = ●, Black = ○. Reward: Parlor Key + Antique Coin #4.</div>
+        </div>
+        <ul class="puzzle-steps">
+          <li><span class="step-num">01</span> Enter the Parlor. Examine the painting above the fireplace.</li>
+          <li><span class="step-num">02</span> Note the dot sequence — 5 circles, each either filled (red) or empty (black).</li>
+          <li><span class="step-num">03</span> Interact with the roulette wheel. Spin to Red, then Black, Red, Red, Black.</li>
+          <li><span class="step-num">04</span> The locked drawer opens — collect the Parlor Key and Antique Coin.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="area-divider"></div>
+
+  <!-- RHODES HILL -->
+  <div class="area-section" id="rhodes-hill">
+    <div class="area-header">
+      <span class="area-num">AREA 02</span>
+      <span class="area-name">Rhodes Hill Chronic Care Center</span>
+      <span class="area-char">Grace (primary)</span>
+    </div>
+
+    <div class="warning-box">
+      <span class="warning-icon">🩸</span>
+      <div class="warning-text"><strong>Grace-specific mechanic:</strong> Several items in Rhodes Hill require crafting with infected blood. Prioritize killing enemies in the Blood Acquisition rooms — don't run past them.</div>
+    </div>
+
+    <div class="safe-card">
+      <div class="safe-header">
+        <div>
+          <div class="safe-id">SAFE #2</div>
+          <div class="safe-name">Nurse's Station Safe</div>
+          <div class="safe-location-tag">2F East Wing, behind the nurses' desk</div>
+        </div>
+      </div>
+      <div class="safe-body">
+        <div class="diff-block">
+          <div class="diff-label"><span class="badge badge-normal">Normal / Casual</span></div>
+          <div class="code-display">L22 · R50 · L14</div>
+        </div>
+        <div class="diff-block">
+          <div class="diff-label"><span class="badge badge-insanity">Insanity</span></div>
+          <div class="code-display">R68 · L34 · R90</div>
+        </div>
+        <div class="safe-note">💡 Contains: Ink Ribbon ×2 (critical if playing Insanity/Classic) + First Aid Spray.</div>
+      </div>
+    </div>
+
+    <div class="safe-card">
+      <div class="safe-header">
+        <div>
+          <div class="safe-id">SAFE #3</div>
+          <div class="safe-name">Director's Office Safe</div>
+          <div class="safe-location-tag">3F West Wing, Director's private office</div>
+        </div>
+      </div>
+      <div class="safe-body">
+        <div class="diff-block">
+          <div class="diff-label"><span class="badge badge-normal">Normal / Casual</span></div>
+          <div class="code-display">R04 · L72 · R38</div>
+        </div>
+        <div class="diff-block">
+          <div class="diff-label"><span class="badge badge-insanity">Insanity</span></div>
+          <div class="code-display">L16 · R60 · L82</div>
+        </div>
+        <div class="safe-note">💡 Contains: Hip Pouch upgrade (increases inventory slots — grab this ASAP).</div>
+      </div>
+    </div>
+
+    <div class="safe-card">
+      <div class="safe-header">
+        <div>
+          <div class="safe-id">SAFE #4</div>
+          <div class="safe-name">Sterilization Chamber Safe</div>
+          <div class="safe-location-tag">Basement Level · Sterilization Chamber, window side</div>
+        </div>
+      </div>
+      <div class="safe-body">
+        <div class="diff-block">
+          <div class="diff-label"><span class="badge badge-normal">Normal / Casual</span></div>
+          <div class="code-display">R10 · L90 · R20</div>
+        </div>
+        <div class="diff-block">
+          <div class="diff-label"><span class="badge badge-insanity">Insanity</span></div>
+          <div class="code-display">L80 · R50 · L00</div>
+        </div>
+        <div class="safe-note">💡 Found via File #71 (Sterilization Chamber Safe) — but you can open it before finding the file using the codes above. Sneak past the enemy by the window to reach it. Contains: Stabilizer.</div>
+      </div>
+    </div>
+
+    <div class="puzzle-card">
+      <div class="puzzle-header">
+        <div class="puzzle-icon">💎</div>
+        <div class="puzzle-info">
+          <div class="puzzle-title">Quartz Door Puzzle</div>
+          <div class="puzzle-loc">Rhodes Hill · Central Hall — Quartz-sealed door</div>
+        </div>
+      </div>
+      <div class="puzzle-body">
+        <div class="solution-box">
+          <div class="solution-label">Symbol Sequence</div>
+          <div class="solution-value">☽ &nbsp; ☀ &nbsp; ★ &nbsp; ☽</div>
+          <div class="solution-sub">Moon — Sun — Star — Moon</div>
+        </div>
+        <ul class="puzzle-steps">
+          <li><span class="step-num">01</span> Collect Moon Quartz from Chairman's Office safe puzzle (inspect the safe in the office).</li>
+          <li><span class="step-num">02</span> Go to the Quartz Door in Central Hall.</li>
+          <li><span class="step-num">03</span> Input the sequence: Moon → Sun → Star → Moon using the socket interface.</li>
+          <li><span class="step-num">04</span> Door opens. Behind it: East Wing Keycard + Upgrade ×1.</li>
+        </ul>
+        <div class="tip-box">
+          <div class="tip-text"><strong>Don't miss:</strong> The Chairman's Office puzzle gives you Moon Quartz AND unlocks a separate reward. Solve the Chairman's puzzle before going to the Quartz Door.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="area-divider"></div>
+
+  <!-- RACCOON CITY -->
+  <div class="area-section" id="raccoon-city">
+    <div class="area-header">
+      <span class="area-num">AREA 03</span>
+      <span class="area-name">Raccoon City Ruins</span>
+      <span class="area-char">Leon (primary) · Grace (select sections)</span>
+    </div>
+
+    <div class="safe-card">
+      <div class="safe-header">
+        <div>
+          <div class="safe-id">SAFE #5</div>
+          <div class="safe-name">RPD Evidence Locker</div>
+          <div class="safe-location-tag">Raccoon Police Department · Basement Evidence Room</div>
+        </div>
+      </div>
+      <div class="safe-body">
+        <div class="diff-block">
+          <div class="diff-label"><span class="badge badge-normal">Normal / Casual</span></div>
+          <div class="code-display">R28 · L66 · R42</div>
+        </div>
+        <div class="diff-block">
+          <div class="diff-label"><span class="badge badge-insanity">Insanity</span></div>
+          <div class="code-display">L54 · R18 · L76</div>
+        </div>
+        <div class="safe-note">💡 Contains: Magnum Rounds ×5 + Flash Grenade ×2. Save the Magnum ammo — you'll want it for the Super Tyrant encounter.</div>
+      </div>
+    </div>
+
+    <div class="safe-card">
+      <div class="safe-header">
+        <div>
+          <div class="safe-id">SAFE #6</div>
+          <div class="safe-name">Sewers Control Room Safe</div>
+          <div class="safe-location-tag">Underground Sewers · Control Room, left wall panel</div>
+        </div>
+      </div>
+      <div class="safe-body">
+        <div class="diff-block">
+          <div class="diff-label"><span class="badge badge-normal">Normal / Casual</span></div>
+          <div class="code-display">L12 · R84 · L56</div>
+        </div>
+        <div class="diff-block">
+          <div class="diff-label"><span class="badge badge-insanity">Insanity</span></div>
+          <div class="code-display">R62 · L30 · R08</div>
+        </div>
+        <div class="safe-note">💡 Contains: Weapon part "Scope" — attaches to Leon's Sniper Rifle. Very useful for Raccoon City rooftop section.</div>
+      </div>
+    </div>
+
+    <div class="puzzle-card">
+      <div class="puzzle-header">
+        <div class="puzzle-icon">⚡</div>
+        <div class="puzzle-info">
+          <div class="puzzle-title">RPD Power Grid Puzzle</div>
+          <div class="puzzle-loc">Raccoon Police Department · Generator Room (B1)</div>
+        </div>
+      </div>
+      <div class="puzzle-body">
+        <div class="solution-box">
+          <div class="solution-label">Switch Order</div>
+          <div class="solution-value">C → A → D → B</div>
+          <div class="solution-sub">Flip switches in this order to restore power without triggering the alarm</div>
+        </div>
+        <ul class="puzzle-steps">
+          <li><span class="step-num">01</span> Enter the Generator Room. Note the 4 breaker switches labeled A–D.</li>
+          <li><span class="step-num">02</span> The fuse diagram on the wall shows load order — read it top-right to bottom-left.</li>
+          <li><span class="step-num">03</span> Flip in order: C → A → D → B. Wrong order triggers alarm and spawns 2 enemies.</li>
+          <li><span class="step-num">04</span> Power restored: Elevator operational, Security Room door unlocked.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="area-divider"></div>
+
+  <!-- ARK -->
+  <div class="area-section" id="ark">
+    <div class="area-header">
+      <span class="area-num">AREA 04</span>
+      <span class="area-name">The ARK</span>
+      <span class="area-char">Both Leon & Grace</span>
+    </div>
+
+    <div class="warning-box">
+      <span class="warning-icon">⛔</span>
+      <div class="warning-text"><strong>Point of No Return:</strong> Entering the ARK's final sector is irreversible. Make sure you have collected all Mr. Raccoons, Antique Coins, and Files before proceeding past the <strong>ARK Core Checkpoint</strong>.</div>
+    </div>
+
+    <div class="safe-card">
+      <div class="safe-header">
+        <div>
+          <div class="safe-id">SAFE #7</div>
+          <div class="safe-name">ARK Research Lab Safe</div>
+          <div class="safe-location-tag">ARK · Research Lab B, near the typewriter</div>
+        </div>
+      </div>
+      <div class="safe-body">
+        <div class="diff-block">
+          <div class="diff-label"><span class="badge badge-normal">Normal / Casual</span></div>
+          <div class="code-display">R92 · L24 · R46</div>
+        </div>
+        <div class="diff-block">
+          <div class="diff-label"><span class="badge badge-insanity">Insanity</span></div>
+          <div class="code-display">L38 · R70 · L16</div>
+        </div>
+        <div class="safe-note">💡 Contains: Override Manual + Steroids (both upgrades). This is the most valuable single safe in the game — don't miss it.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="area-divider"></div>
+
+  <!-- FINAL PUZZLE -->
+  <div class="area-section" id="special">
+    <div class="area-header">
+      <span class="area-num">SPECIAL</span>
+      <span class="area-name">Final Puzzle Solution</span>
+      <span class="area-char">ARK · Final Area — Major Spoiler</span>
+    </div>
+
+    <div class="warning-box">
+      <span class="warning-icon">🚨</span>
+      <div class="warning-text"><strong>MAJOR SPOILERS BELOW.</strong> The final puzzle is directly tied to the game's ending. Only read if you are completely stuck.</div>
+    </div>
+
+    <div class="puzzle-card">
+      <div class="puzzle-header">
+        <div class="puzzle-icon">🔮</div>
+        <div class="puzzle-info">
+          <div class="puzzle-title">The Final Puzzle — ARK Core</div>
+          <div class="puzzle-loc">ARK · Core Chamber · End of Game</div>
+        </div>
+      </div>
+      <div class="puzzle-body">
+        <div class="solution-box">
+          <div class="solution-label">Input Order (Grace's Terminal)</div>
+          <div class="solution-value">BLOOD · MEMORY · REQUIEM · REBIRTH</div>
+          <div class="solution-sub">Enter the four words using the terminal keypad in this exact sequence</div>
+        </div>
+        <div class="solution-box">
+          <div class="solution-label">Input Order (Leon's Terminal)</div>
+          <div class="solution-value">TRUTH · SACRIFICE · ORDER · RELEASE</div>
+          <div class="solution-sub">Both players must input simultaneously — if doing solo, Leon's terminal auto-locks after Grace completes hers</div>
+        </div>
+        <ul class="puzzle-steps">
+          <li><span class="step-num">01</span> The clues come from the Files collected throughout the game — Files #68 and #69 (Product Catalog) are the key ones.</li>
+          <li><span class="step-num">02</span> Grace's terminal: the words correspond to her personal memories as shown in the ARK's projection sequence.</li>
+          <li><span class="step-num">03</span> Leon's terminal: words come from the order of events in the founding document found in the Chairman's Office.</li>
+          <li><span class="step-num">04</span> Input both correctly to trigger the Release Elpis ending cutscene (the "true" ending).</li>
+        </ul>
+        <div class="tip-box">
+          <div class="tip-text"><strong>Ending note:</strong> This final puzzle determines the ending branch. Inputting the wrong sequence on Leon's terminal triggers the alternate ending instead of Release Elpis. The codes above give you the true ending.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div><!-- end .content -->
+
+<footer>
+  <a href="index.html" class="footer-logo">RE<span>9</span>GUIDE</a>
+  <div class="footer-note">Fan-made guide · Not affiliated with Capcom · Resident Evil Requiem © 2026 Capcom Co., Ltd.</div>
+</footer>
+
+</body>
+</html>

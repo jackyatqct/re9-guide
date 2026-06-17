@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Collectibles — Mr. Raccoon & Antique Coins | Resident Evil Requiem RE9</title>
+<meta name="description" content="All 25 Mr. Raccoon locations and all Antique Coin locations in Resident Evil Requiem RE9. Find every collectible for 100% completion and unlock Advanced Tuning.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blood:#8B0000; --blood-dim:#5a0000; --rust:#C0392B; --amber:#E8A000;
+    --bone:#D4C9B0; --ash:#9A9590; --ink:#0D0C0B; --ink-mid:#1A1917;
+    --ink-light:#252320; --ink-border:#2E2C29; --text:#C8C2B8; --text-dim:#7A746E;
+    --green:#2d7a3a; --green-bright:#4CAF50;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--ink); color: var(--text); font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; }
+  body::before { content: ''; position: fixed; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.05) 2px, rgba(0,0,0,0.05) 4px); pointer-events: none; z-index: 1000; }
+
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(13,12,11,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--ink-border); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 52px; }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.12em; color: var(--bone); text-decoration: none; }
+  .nav-logo span { color: var(--blood); }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: var(--ash); text-decoration: none; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--bone); }
+  .nav-links a.active { color: var(--amber); }
+
+  .page-header { padding: 56px 48px 48px; background: linear-gradient(180deg, var(--ink-mid) 0%, var(--ink) 100%); border-bottom: 1px solid var(--ink-border); position: relative; overflow: hidden; }
+  .page-header::before { content: '🦝'; position: absolute; right: 60px; top: 50%; transform: translateY(-50%); font-size: 160px; opacity: 0.04; pointer-events: none; line-height: 1; }
+  .breadcrumb { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-dim); letter-spacing: 0.1em; margin-bottom: 16px; }
+  .breadcrumb a { color: var(--blood); text-decoration: none; }
+  .page-title { font-family: 'Bebas Neue', sans-serif; font-size: 56px; letter-spacing: 0.03em; color: var(--bone); line-height: 1; margin-bottom: 10px; }
+  .page-title span { color: var(--blood); }
+  .page-desc { font-size: 14px; color: var(--text-dim); max-width: 560px; line-height: 1.7; }
+  .reward-bar { display: flex; gap: 20px; margin-top: 24px; flex-wrap: wrap; }
+  .reward-item { background: var(--ink-light); border: 1px solid var(--ink-border); padding: 12px 18px; }
+  .reward-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 4px; font-family: 'JetBrains Mono', monospace; }
+  .reward-value { font-size: 13px; color: var(--amber); font-weight: 500; }
+
+  .jump-nav { background: var(--ink-mid); border-bottom: 1px solid var(--ink-border); padding: 14px 48px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .jump-link { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); text-decoration: none; padding: 5px 12px; border: 1px solid var(--ink-border); transition: all 0.2s; }
+  .jump-link:hover { color: var(--bone); border-color: var(--blood-dim); background: var(--ink-light); }
+
+  .content { max-width: 960px; margin: 0 auto; padding: 60px 48px; }
+
+  .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
+  .section-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blood); border: 1px solid var(--blood-dim); padding: 3px 8px; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.04em; color: var(--bone); }
+  .section-subtitle { font-size: 13px; color: var(--text-dim); margin-bottom: 28px; }
+
+  /* PROGRESS TRACKER */
+  .tracker-bar { background: var(--ink-mid); border: 1px solid var(--ink-border); padding: 16px 20px; margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+  .tracker-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; }
+  .tracker-count { font-family: 'JetBrains Mono', monospace; font-size: 18px; font-weight: 600; color: var(--amber); }
+  .tracker-total { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-dim); }
+  .tracker-progress { flex: 1; height: 4px; background: var(--ink-border); }
+  .tracker-fill { height: 100%; background: linear-gradient(90deg, var(--blood), var(--amber)); width: 0%; transition: width 0.5s; }
+
+  /* COLLECTIBLE TABLE */
+  .collectible-table { width: 100%; border-collapse: collapse; margin-bottom: 48px; }
+  .collectible-table thead tr { border-bottom: 2px solid var(--blood-dim); }
+  .collectible-table th { padding: 10px 14px; text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); font-weight: 400; }
+  .collectible-table tbody tr { border-bottom: 1px solid var(--ink-border); transition: background 0.15s; }
+  .collectible-table tbody tr:hover { background: var(--ink-light); }
+  .collectible-table td { padding: 12px 14px; font-size: 13px; vertical-align: top; }
+  .num-cell { font-family: 'JetBrains Mono', monospace; color: var(--blood); font-size: 12px; width: 44px; }
+  .area-cell { color: var(--text-dim); font-size: 12px; white-space: nowrap; }
+  .loc-cell { color: var(--text); }
+  .loc-cell .subloc { color: var(--text-dim); font-size: 12px; display: block; margin-top: 2px; }
+  .miss-cell { }
+  .miss-badge { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 7px; white-space: nowrap; }
+  .miss-yes { border: 1px solid var(--blood-dim); color: var(--rust); }
+  .miss-no { border: 1px solid #2a3a2a; color: #4CAF50; }
+  .check-cell { width: 36px; }
+  .check-box { width: 16px; height: 16px; border: 1px solid var(--ink-border); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; color: transparent; transition: all 0.15s; }
+  .check-box:hover { border-color: var(--blood); }
+  .check-box.checked { background: var(--blood); color: white; border-color: var(--blood); }
+
+  /* COIN GRID */
+  .coin-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 48px; }
+  .coin-card { background: var(--ink-mid); border: 1px solid var(--ink-border); padding: 16px 18px; }
+  .coin-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--blood); margin-bottom: 6px; }
+  .coin-area { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .coin-loc { font-size: 13px; color: var(--text); }
+  .coin-note { font-size: 11px; color: var(--text-dim); margin-top: 6px; font-style: italic; }
+
+  /* EXCHANGE TABLE */
+  .exchange-table { width: 100%; border-collapse: collapse; margin-bottom: 48px; background: var(--ink-mid); border: 1px solid var(--ink-border); }
+  .exchange-table th { padding: 12px 16px; text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); background: var(--ink-light); border-bottom: 1px solid var(--ink-border); }
+  .exchange-table td { padding: 12px 16px; font-size: 13px; border-bottom: 1px solid var(--ink-border); }
+  .exchange-table tr:last-child td { border-bottom: none; }
+  .upgrade-name { color: var(--bone); font-weight: 500; }
+  .coin-cost { font-family: 'JetBrains Mono', monospace; color: var(--amber); }
+  .upgrade-desc { color: var(--text-dim); font-size: 12px; }
+  .upgrade-rec { font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 2px 7px; border: 1px solid; }
+  .rec-high { border-color: var(--blood-dim); color: var(--rust); }
+  .rec-med { border-color: #5a4a20; color: var(--amber); }
+
+  .warning-box { background: rgba(139,0,0,0.1); border: 1px solid var(--blood-dim); padding: 14px 18px; margin-bottom: 28px; display: flex; gap: 10px; }
+  .warning-text { font-size: 13px; color: var(--bone); line-height: 1.6; }
+  .warning-text strong { color: var(--rust); }
+
+  .tip-box { background: rgba(0,60,0,0.1); border: 1px solid #2a4a2a; padding: 14px 18px; margin-bottom: 28px; display: flex; gap: 10px; }
+  .tip-text { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+  .tip-text strong { color: var(--green-bright); }
+
+  .section-divider { height: 1px; background: linear-gradient(90deg, var(--blood-dim), transparent); margin: 60px 0; }
+
+  footer { background: var(--ink-mid); border-top: 1px solid var(--ink-border); padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.12em; color: var(--ash); text-decoration: none; }
+  .footer-logo span { color: var(--blood-dim); }
+  .footer-note { font-size: 11px; color: var(--text-dim); }
+
+  @media (max-width: 768px) {
+    .page-header, .content { padding-left: 24px; padding-right: 24px; }
+    .jump-nav { padding: 12px 24px; }
+    .coin-grid { grid-template-columns: 1fr 1fr; }
+    .collectible-table { font-size: 12px; }
+    footer { flex-direction: column; gap: 12px; }
+    nav { padding: 0 16px; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">RE<span>9</span>GUIDE</a>
+  <ul class="nav-links">
+    <li><a href="walkthrough.html">Walkthrough</a></li>
+    <li><a href="puzzles.html">Puzzles & Codes</a></li>
+    <li><a href="bosses.html">Bosses</a></li>
+    <li><a href="collectibles.html" class="active">Collectibles</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">RE9 Guide</a> › All Collectibles</div>
+  <h1 class="page-title">All <span>Collectibles</span></h1>
+  <p class="page-desc">Every Mr. Raccoon statue, Antique Coin, and File location for 100% completion. Includes what each unlocks and missable warnings.</p>
+  <div class="reward-bar">
+    <div class="reward-item">
+      <div class="reward-label">All 25 Mr. Raccoons</div>
+      <div class="reward-value">Unlocks: Advanced Tuning + "You Little Rascal!" Achievement</div>
+    </div>
+    <div class="reward-item">
+      <div class="reward-label">Antique Coins</div>
+      <div class="reward-value">Exchange for: Hip Pouch, Stabilizer, Steroids, Override Manual</div>
+    </div>
+  </div>
+</div>
+
+<nav class="jump-nav">
+  <a href="#mr-raccoon" class="jump-link">Mr. Raccoon (25)</a>
+  <a href="#coins" class="jump-link">Antique Coins</a>
+  <a href="#coin-exchange" class="jump-link">Coin Exchange</a>
+  <a href="#files" class="jump-link">Files</a>
+</nav>
+
+<div class="content">
+
+  <!-- MR RACCOON -->
+  <div id="mr-raccoon">
+    <div class="section-header">
+      <span class="section-tag">Collectible</span>
+      <h2 class="section-title">Mr. Raccoon Statues</h2>
+    </div>
+    <p class="section-subtitle">Find and destroy all 25 Mr. Raccoon statues. Reward: Advanced Tuning (more weapon upgrade options) + "You Little Rascal!" trophy/achievement.</p>
+
+    <div class="warning-box">
+      <span>⚠️</span>
+      <div class="warning-text"><strong>None are missable</strong> in Normal difficulty — all areas are revisitable. On Insanity mode, statues #18–22 in the ARK must be collected before the final boss trigger point. Check the note column below.</div>
+    </div>
+
+    <div class="tracker-bar">
+      <span class="tracker-label">Progress</span>
+      <span class="tracker-count" id="raccoon-count">0</span>
+      <span class="tracker-total">&nbsp;/ 25</span>
+      <div class="tracker-progress"><div class="tracker-fill" id="raccoon-bar"></div></div>
+    </div>
+
+    <table class="collectible-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Area</th>
+          <th>Location</th>
+          <th>Missable</th>
+          <th>✓</th>
+        </tr>
+      </thead>
+      <tbody id="raccoon-tbody">
+        <!-- Wrenwood -->
+        <tr><td class="num-cell">01</td><td class="area-cell">Wrenwood</td><td class="loc-cell">Hotel Lobby — on the front desk shelf, behind the check-in monitor<span class="subloc">Face level, can be shot from the entrance</span></td><td class="miss-cell"><span class="miss-badge miss-no">No</span></td><td class="check-cell"><div class="check-box" onclick="toggleCheck(this,'r',1)"></div></td></tr>
+        <tr><td class="num-cell">02</td><td class="area-cell">Wrenwood</td><td class="loc-cell">Wrenwood Hotel — Dining Room, top shelf of the wine rack<span class="subloc">Far left corner, requires looking up</span></td><td class="miss-cell"><span class="miss-badge miss-no">No</span></td><td class="check-cell"><div class="check-box" onclick="toggleCheck(this,'r',2)"></div></td></tr>
+        <tr><td class="num-cell">03</td><td class="area-cell">Wrenwood</td><td class="loc-cell">Hotel Basement — Generator Room, on the pipe junction near the east wall<span class="subloc">Easy to miss — it's behind the large pipe</span></td><td class="miss-cell"><span class="miss-badge miss-no">No</span></td><td class="check-cell"><div class="check-box" onclick="toggleCheck(this,'r',3)"></div></td></tr>
+        <tr><td class="num-cell">04</td><td class="area-cell">Wrenwood</td><td class="loc-cell">Parlor — sitting on the Roulette table, right side<span class="subloc">Visible immediately on entering Parlor</span></td><td class="miss-cell"><span class="miss-badge miss-no">No</span></td><td class="check-cell"><div class="check-box" onclick="toggleCheck(this,'r',4)"></div></td></tr>
+        <tr><td class="num-cell">05</td><td class="area-cell">Wrenwood</td><td class="loc-cell">Hotel Roof — northeast corner, near the water tower base<span class="subloc">Accessed via the fire escape on 4F</span></td><td class="miss-cell"><span class="miss-badge miss-no">No</span></td><td class="check-cell"><div class="check-box" onclick="toggleCheck(this,'r',5)"></div></td></tr>
+
+        <!-- Rhodes Hill -->
+        <tr><td class="num-cell">06</td><td class="area-cell">Rhodes Hill</td><td class="loc-cell">Care Center Reception — on the windowsill, facing outside<span class="subloc">Ground floor, left window when entering</span></td><td class="miss-cell"><span class="miss-badge miss-no">No</span></td><td class="check-cell"><div class="check-box" onclick="toggleCheck(this,'r',6)"></div></td></tr>
+        <tr><td class="num-cell">07</td><td class="area-cell">Rhodes Hill</td><td class="loc-cell">East Wing Hallway (2F) — inside a medical supply cart, door is locked<span class="subloc">Requires East Wing Keycard from Quartz Door puzzle</span></td><td class="miss-cell"><span class="miss-badge miss-no">No</span></td><td class="check-cell"><div class="check-box" onclick="toggleCheck(this,'r',7)"></div></td></tr>
+        <tr><td class="num-cell">08</td><td class="area-cell">Rhodes Hill</td><td class="loc-cell">Director's Office — on the bookshelf, 3rd shelf from top, right side<span class="subloc">Check every shelf — it's small</span></td><td class="miss-cell"><span class="miss-badge miss-no">No</span></td><td class="check-cell"><div class="check-box" onclick="toggleCheck(this,'r',8)"></div></td></tr>
+        <tr><td class="num-cell">09</td><td class="area-cell">Rhodes Hill</td><td class="loc-cell">Sterilization Chamber — on a trolley in the far corner, behind the enemy<span class="subloc">Sneak past or kill enemy first</span></td><td class="miss-cell"><span class="miss-badge miss-no">No</span></td><td class="check-cell"><div class="check-box" onclick="toggleCheck(this,'r',9)"></div></td></tr>
+        <tr><td class="num-cell">10</td><td class="area-cell">Rhodes Hill</td><td class="loc-cell">Sub-Basement — unlocked after The Keeper boss fight, on the flooded section walkway<span class="subloc">North wall, just above waterline</span></td><td class="miss-cell"><span class="miss-badge miss-no">No</span></td><td class="check-cell"><div class="check-box" onclick="toggleCheck(this,'r',10)"></div></td></tr>
+        <tr><td class="num-cell">11</td><td class="area-cell">Rhodes Hill</td><td class="loc-cell">Morgue (B2) — inside an open drawer, third row from the bottom, left side<span class="subloc">Open all drawers in the row</span></td><td class="miss-cell"><span class="miss-badge miss-no">No</span></td><td class="check-cell"><div class="check-box" onclick="toggleCheck(this,'r',11)"></div></td></tr>
+
+        <!-- Raccoon City -->
+        <tr><td class="num-cell">12</td><td class="area-cell">Raccoon City</td><td class="loc-cell">Raccoon City Streets — on a fire escape platform, 2F level, NW building cluster<span class="subloc">Shoot from across the street</span></td><td class="miss-cell"><span class="miss-badge miss-no">No</span></td><td class="check-cell"><div class="check-box" onclick="toggleCheck(this,'r',12)"></div></td></tr>
+        <tr><td class="num-cell">13</td><td class="area-cell">Raccoon City</td><td class="loc-cell">RPD Entrance Hall — on top of the RPD crest mosaic, center floor<span class="subloc">Visible from main entrance, requires looking down</span></td><td class="miss-cell"><span class="miss-badge miss-no">No</span></td><td class="check-cell"><div class="check-box" onclick="toggleCheck(this,'r',13)"></div></td></tr>
+        <tr><td class="num-cell">14</td><td class="area-cell">Raccoon City</td><td class="loc-cell">RPD Evidence Room — inside evidence box #7, on the shelf<span class="subloc">Interact with the box, not just the shelf</span></td><td class="miss-cell"><span class="miss-badge miss-no">No</span></td><td class="check-cell"><div class="check-box" onclick="toggleCheck(this,'r',14)"></div></td></tr>
+        <tr><td class="num-cell">15</td><td class="area-cell">Raccoon City</td><td class="loc-cell">Raccoon City Sewers — on a ledge above the first water valve puzzle<span class="subloc">Jump up using the crates to the east</span></td><td class="miss-cell"><span class="miss-badge miss-no">No</span></td><td class="check-cell"><div class="check-box" onclick="toggleCheck(this,'r',15)"></div></td></tr>
+        <tr><td class="num-cell">16</td><td class="area-cell">Raccoon City</td><td class="loc-cell">NF Building Rooftop — northwest corner, near the air conditioning unit<span class="subloc">During Leon's chase sequence — shoot while running</span></td><td class="miss-cell"><span class="miss-badge miss-yes">⚠ Timed</span></td><td class="check-cell"><div class="check-box" onclick="toggleCheck(this,'r',16)"></div></td></tr>
+        <tr><td class="num-cell">17</td><td class="area-cell">Raccoon City</td><td class="loc-cell">Raccoon City Central Square — on the war memorial statue's base<span class="subloc">After Super Tyrant fight, before ARK entrance</span></td><td class="miss-cell"><span class="miss-badge miss-no">No</span></td><td class="check-cell"><div class="check-box" onclick="toggleCheck(this,'r',17)"></div></td></tr>
+
+        <!-- ARK -->
+        <tr><td class="num-cell">18</td><td class="area-cell">The ARK</td><td class="loc-cell">ARK Hangar — on top of a cargo container, near the east entrance<span class="subloc">Climb the smaller containers to reach it</span></td><td class="miss-cell"><span class="miss-badge miss-yes">⚠ Insanity</span></td><td class="check-cell"><div class="check-box" onclick="toggleCheck(this,'r',18)"></div></td></tr>
+        <tr><td class="num-cell">19</td><td class="area-cell">The ARK</td><td class="loc-cell">Research Lab A — inside the specimen containment unit, requires keycard<span class="subloc">Lab Keycard found in same room</span></td><td class="miss-cell"><span class="miss-badge miss-yes">⚠ Insanity</span></td><td class="check-cell"><div class="check-box" onclick="toggleCheck(this,'r',19)"></div></td></tr>
+        <tr><td class="num-cell">20</td><td class="area-cell">The ARK</td><td class="loc-cell">Research Lab B — on the typewriter desk itself (next to it)<span class="subloc">Hard to miss — it's right at the save point</span></td><td class="miss-cell"><span class="miss-badge miss-yes">⚠ Insanity</span></td><td class="check-cell"><div class="check-box" onclick="toggleCheck(this,'r',20)"></div></td></tr>
+        <tr><td class="num-cell">21</td><td class="area-cell">The ARK</td><td class="loc-cell">ARK Control Tower — Level 3, behind the main console panel<span class="subloc">Crouch to see it behind the desk</span></td><td class="miss-cell"><span class="miss-badge miss-yes">⚠ Insanity</span></td><td class="check-cell"><div class="check-box" onclick="toggleCheck(this,'r',21)"></div></td></tr>
+        <tr><td class="num-cell">22</td><td class="area-cell">The ARK</td><td class="loc-cell">ARK Core Corridor — on a pipe junction 20m before the Point of No Return door<span class="subloc">LAST CHANCE — collect before entering the final door</span></td><td class="miss-cell"><span class="miss-badge miss-yes">⚠ MISSABLE</span></td><td class="check-cell"><div class="check-box" onclick="toggleCheck(this,'r',22)"></div></td></tr>
+        <tr><td class="num-cell">23</td><td class="area-cell">ARK Core</td><td class="loc-cell">Core Chamber Access — on the left wall just past the Point of No Return door<span class="subloc">Immediately visible on entry, collect fast</span></td><td class="miss-cell"><span class="miss-badge miss-no">No</span></td><td class="check-cell"><div class="check-box" onclick="toggleCheck(this,'r',23)"></div></td></tr>
+        <tr><td class="num-cell">24</td><td class="area-cell">ARK Core</td><td class="loc-cell">Core Chamber — on the second console tier, facing Grace's terminal<span class="subloc">Collectible before the final puzzle starts</span></td><td class="miss-cell"><span class="miss-badge miss-no">No</span></td><td class="check-cell"><div class="check-box" onclick="toggleCheck(this,'r',24)"></div></td></tr>
+        <tr><td class="num-cell">25</td><td class="area-cell">ARK Core</td><td class="loc-cell">Core Chamber — hidden inside the broken monitor on the west wall<span class="subloc">Shoot the screen to reveal it, then shoot the statue</span></td><td class="miss-cell"><span class="miss-badge miss-no">No</span></td><td class="check-cell"><div class="check-box" onclick="toggleCheck(this,'r',25)"></div></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ANTIQUE COINS -->
+  <div id="coins">
+    <div class="section-header">
+      <span class="section-tag">Collectible</span>
+      <h2 class="section-title">Antique Coins</h2>
+    </div>
+    <p class="section-subtitle">Collect Antique Coins and exchange them at the locked lockers in the Parlor for four powerful upgrades. You need 17 total coins to unlock all four lockers.</p>
+
+    <div class="tip-box">
+      <div class="tip-text"><strong>Priority order:</strong> Hip Pouch first (more inventory = more resources carried), then Stabilizer (reduces recoil), Steroids (increases Grace's health permanently), Override Manual (weapon range upgrade).</div>
+    </div>
+
+    <div class="coin-grid">
+      <div class="coin-card"><div class="coin-num">COIN #01</div><div class="coin-area">Wrenwood</div><div class="coin-loc">Hotel Lobby — inside the small potted plant on the left side of reception</div><div class="coin-note">Examine the plant</div></div>
+      <div class="coin-card"><div class="coin-num">COIN #02</div><div class="coin-area">Wrenwood</div><div class="coin-loc">Dining Room — behind the overturned soup tureen on the serving table</div></div>
+      <div class="coin-card"><div class="coin-num">COIN #03</div><div class="coin-area">Wrenwood</div><div class="coin-loc">Basement Storage — inside a cardboard box near the south shelving unit</div><div class="coin-note">Destroy box</div></div>
+      <div class="coin-card"><div class="coin-num">COIN #04</div><div class="coin-area">Wrenwood</div><div class="coin-loc">Parlor — on the Roulette table (after solving the Roulette Wheel puzzle)</div></div>
+      <div class="coin-card"><div class="coin-num">COIN #05</div><div class="coin-area">Wrenwood</div><div class="coin-loc">Parlor — on the bar counter</div></div>
+      <div class="coin-card"><div class="coin-num">COIN #06</div><div class="coin-area">Wrenwood</div><div class="coin-loc">Parlor — behind the counter, destroy the porcelain container</div></div>
+      <div class="coin-card"><div class="coin-num">COIN #07</div><div class="coin-area">Rhodes Hill</div><div class="coin-loc">Care Center Reception — in the waiting room, under the right-side chair</div></div>
+      <div class="coin-card"><div class="coin-num">COIN #08</div><div class="coin-area">Rhodes Hill</div><div class="coin-loc">2F East Wing — on the nurses' station counter, right side</div></div>
+      <div class="coin-card"><div class="coin-num">COIN #09</div><div class="coin-area">Rhodes Hill</div><div class="coin-loc">Chairman's Office — examine the bookcase near the window after solving the safe puzzle</div></div>
+      <div class="coin-card"><div class="coin-num">COIN #10</div><div class="coin-area">Rhodes Hill</div><div class="coin-loc">Morgue (B2) — inside a medical container on the central examination table</div></div>
+      <div class="coin-card"><div class="coin-num">COIN #11</div><div class="coin-area">Rhodes Hill</div><div class="coin-loc">Sub-Basement — on a shelf in the flooded storage room (requires The Keeper key)</div></div>
+      <div class="coin-card"><div class="coin-num">COIN #12</div><div class="coin-area">Raccoon City</div><div class="coin-loc">City Streets — in a newspaper box near the first barricade (shoot the box)</div></div>
+      <div class="coin-card"><div class="coin-num">COIN #13</div><div class="coin-area">Raccoon City</div><div class="coin-loc">RPD Entrance — inside the first aid kit on the wall in the lobby</div></div>
+      <div class="coin-card"><div class="coin-num">COIN #14</div><div class="coin-area">Raccoon City</div><div class="coin-loc">RPD Armory — in the gear locker, requires RPD Armory Key from Officer corpse in the hallway</div></div>
+      <div class="coin-card"><div class="coin-num">COIN #15</div><div class="coin-area">Raccoon City</div><div class="coin-loc">Sewers Control Room — on the desk next to the control panel</div></div>
+      <div class="coin-card"><div class="coin-num">COIN #16</div><div class="coin-area">The ARK</div><div class="coin-loc">ARK Hangar — near the entrance, on a red equipment cart</div></div>
+      <div class="coin-card"><div class="coin-num">COIN #17</div><div class="coin-area">The ARK</div><div class="coin-loc">Research Lab A — in the sample freezer, second compartment</div></div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- COIN EXCHANGE -->
+  <div id="coin-exchange">
+    <div class="section-header">
+      <span class="section-tag">Upgrades</span>
+      <h2 class="section-title">Coin Exchange — Parlor Lockers</h2>
+    </div>
+    <p class="section-subtitle">The 4 locked lockers in the Parlor cost a total of 17 Antique Coins. Unlock them in priority order below.</p>
+
+    <table class="exchange-table">
+      <thead>
+        <tr>
+          <th>Upgrade</th>
+          <th>Cost</th>
+          <th>Effect</th>
+          <th>Priority</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="upgrade-name">Hip Pouch</td>
+          <td class="coin-cost">3 Coins</td>
+          <td class="upgrade-desc">Adds 2 inventory slots. Stack up to 3 times total across the game.</td>
+          <td><span class="upgrade-rec rec-high">Get First</span></td>
+        </tr>
+        <tr>
+          <td class="upgrade-name">Stabilizer</td>
+          <td class="coin-cost">4 Coins</td>
+          <td class="upgrade-desc">Permanently reduces weapon recoil. Improves accuracy at range.</td>
+          <td><span class="upgrade-rec rec-high">Get Second</span></td>
+        </tr>
+        <tr>
+          <td class="upgrade-name">Steroids</td>
+          <td class="coin-cost">4 Coins</td>
+          <td class="upgrade-desc">Permanently increases Grace's max health. Significant survivability boost.</td>
+          <td><span class="upgrade-rec rec-med">Get Third</span></td>
+        </tr>
+        <tr>
+          <td class="upgrade-name">Override Manual</td>
+          <td class="coin-cost">6 Coins</td>
+          <td class="upgrade-desc">Unlocks weapon modification override — allows equipping incompatible parts.</td>
+          <td><span class="upgrade-rec rec-med">Get Fourth</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<footer>
+  <a href="index.html" class="footer-logo">RE<span>9</span>GUIDE</a>
+  <div class="footer-note">Fan-made guide · Not affiliated with Capcom · Resident Evil Requiem © 2026 Capcom Co., Ltd.</div>
+</footer>
+
+<script>
+  const raccoonState = JSON.parse(localStorage.getItem('re9_raccoons') || '{}');
+
+  function updateRaccoonCount() {
+    const count = Object.values(raccoonState).filter(Boolean).length;
+    document.getElementById('raccoon-count').textContent = count;
+    document.getElementById('raccoon-bar').style.width = (count / 25 * 100) + '%';
+  }
+
+  function toggleCheck(el, type, num) {
+    el.classList.toggle('checked');
+    if (el.classList.contains('checked')) {
+      el.textContent = '✓';
+      raccoonState[num] = true;
+    } else {
+      el.textContent = '';
+      raccoonState[num] = false;
+    }
+    localStorage.setItem('re9_raccoons', JSON.stringify(raccoonState));
+    updateRaccoonCount();
+  }
+
+  // Restore state
+  document.querySelectorAll('.check-box').forEach(box => {
+    const onclick = box.getAttribute('onclick');
+    const match = onclick.match(/,(\d+)\)/);
+    if (match) {
+      const num = parseInt(match[1]);
+      if (raccoonState[num]) {
+        box.classList.add('checked');
+        box.textContent = '✓';
+      }
+    }
+  });
+  updateRaccoonCount();
+</script>
+
+</body>
+</html>
