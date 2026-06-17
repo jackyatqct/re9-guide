@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resident Evil Requiem Walkthrough | RE9 Complete Guide All Areas</title>
+<meta name="description" content="Complete Resident Evil Requiem (RE9) walkthrough. Step-by-step guide for all areas: Wrenwood Hotel, Rhodes Hill, Raccoon City, and the ARK. Covers both Leon and Grace campaigns.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{--blood:#8B0000;--blood-dim:#5a0000;--rust:#C0392B;--amber:#E8A000;--bone:#D4C9B0;--ash:#9A9590;--ink:#0D0C0B;--ink-mid:#1A1917;--ink-light:#252320;--ink-border:#2E2C29;--text:#C8C2B8;--text-dim:#7A746E;--green-bright:#4CAF50;--blue:#4a7ab5;--blue-dim:#2a4a7a}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--ink);color:var(--text);font-family:'Inter',sans-serif;font-size:15px;line-height:1.6}
+  body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.05) 2px,rgba(0,0,0,0.05) 4px);pointer-events:none;z-index:1000}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:100;background:rgba(13,12,11,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--ink-border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:52px}
+  .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.12em;color:var(--bone);text-decoration:none}
+  .nav-logo span{color:var(--blood)}
+  .nav-links{display:flex;gap:28px;list-style:none}
+  .nav-links a{color:var(--ash);text-decoration:none;font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s}
+  .nav-links a:hover{color:var(--bone)}
+  .nav-links a.active{color:var(--amber)}
+
+  /* PAGE HEADER */
+  .page-header{padding:56px 48px 48px;background:linear-gradient(180deg,var(--ink-mid) 0%,var(--ink) 100%);border-bottom:1px solid var(--ink-border);position:relative;overflow:hidden}
+  .page-header::before{content:'WALKTHROUGH';position:absolute;right:48px;top:50%;transform:translateY(-50%);font-family:'Bebas Neue',sans-serif;font-size:90px;letter-spacing:0.05em;color:rgba(255,255,255,0.02);pointer-events:none;line-height:1;white-space:nowrap}
+  .breadcrumb{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-dim);letter-spacing:0.1em;margin-bottom:16px}
+  .breadcrumb a{color:var(--blood);text-decoration:none}
+  .page-title{font-family:'Bebas Neue',sans-serif;font-size:56px;letter-spacing:0.03em;color:var(--bone);line-height:1;margin-bottom:10px}
+  .page-title span{color:var(--blood)}
+  .page-desc{font-size:14px;color:var(--text-dim);max-width:600px;line-height:1.7}
+  .page-meta{display:flex;gap:20px;margin-top:20px;flex-wrap:wrap}
+  .meta-pill{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-dim);border:1px solid var(--ink-border);padding:4px 10px;letter-spacing:0.1em;text-transform:uppercase}
+  .meta-pill strong{color:var(--amber)}
+
+  /* AREA NAV */
+  .area-nav{background:var(--ink-mid);border-bottom:1px solid var(--ink-border);padding:0 48px;display:flex;gap:0;overflow-x:auto}
+  .area-tab{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);text-decoration:none;padding:14px 20px;border-bottom:2px solid transparent;white-space:nowrap;transition:all 0.2s;flex-shrink:0}
+  .area-tab:hover{color:var(--bone);border-bottom-color:var(--ink-border)}
+  .area-tab.active{color:var(--amber);border-bottom-color:var(--amber)}
+
+  /* LAYOUT */
+  .walkthrough-layout{display:grid;grid-template-columns:260px 1fr;gap:0;max-width:1200px;margin:0 auto}
+
+  /* SIDEBAR */
+  .sidebar{border-right:1px solid var(--ink-border);padding:32px 24px;position:sticky;top:52px;height:calc(100vh - 52px);overflow-y:auto}
+  .sidebar-section{margin-bottom:28px}
+  .sidebar-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--blood);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .sidebar-label::after{content:'';flex:1;height:1px;background:var(--blood-dim)}
+  .sidebar-links{list-style:none;display:flex;flex-direction:column;gap:2px}
+  .sidebar-links a{color:var(--text-dim);text-decoration:none;font-size:12px;padding:6px 10px;display:flex;align-items:center;gap:8px;transition:all 0.2s;border-left:2px solid transparent}
+  .sidebar-links a:hover{color:var(--bone);background:var(--ink-light);border-left-color:var(--blood-dim)}
+  .sidebar-links a.current{color:var(--amber);border-left-color:var(--amber);background:rgba(232,160,0,0.05)}
+  .sidebar-links .char-leon{color:var(--blue)}
+  .sidebar-links .char-grace{color:var(--blood)}
+
+  /* MAIN CONTENT */
+  .main-content{padding:48px 48px 80px}
+
+  /* AREA SECTIONS */
+  .area-block{margin-bottom:80px}
+  .area-block-header{display:flex;align-items:flex-start;gap:20px;margin-bottom:32px;padding-bottom:20px;border-bottom:1px solid var(--ink-border)}
+  .area-number{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--blood);border:1px solid var(--blood-dim);padding:4px 10px;flex-shrink:0;margin-top:6px}
+  .area-block-title{font-family:'Bebas Neue',sans-serif;font-size:44px;letter-spacing:0.03em;color:var(--bone);line-height:1}
+  .area-subtitle{font-size:13px;color:var(--text-dim);margin-top:4px}
+  .area-chars{display:flex;gap:8px;margin-top:10px}
+  .char-badge{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:3px 10px;border:1px solid}
+  .char-badge-leon{border-color:var(--blue-dim);color:var(--blue)}
+  .char-badge-grace{border-color:var(--blood-dim);color:var(--rust)}
+
+  /* CHAPTER CARDS */
+  .chapter-list{display:flex;flex-direction:column;gap:3px;margin-bottom:28px}
+  .chapter-card{background:var(--ink-mid);border:1px solid var(--ink-border);overflow:hidden}
+  .chapter-header{padding:18px 22px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:background 0.2s;user-select:none}
+  .chapter-header:hover{background:var(--ink-light)}
+  .chapter-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--blood);flex-shrink:0;width:28px}
+  .chapter-title{font-size:14px;font-weight:600;color:var(--bone);flex:1}
+  .chapter-meta{font-size:11px;color:var(--text-dim);flex-shrink:0}
+  .chapter-toggle{color:var(--text-dim);font-size:12px;flex-shrink:0;transition:transform 0.2s}
+  .chapter-card.open .chapter-toggle{transform:rotate(180deg)}
+  .chapter-body{display:none;padding:0 22px 20px;border-top:1px solid var(--ink-border)}
+  .chapter-card.open .chapter-body{display:block}
+
+  /* STEPS */
+  .step-list{list-style:none;display:flex;flex-direction:column;gap:0;margin-top:16px}
+  .step-item{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.03)}
+  .step-item:last-child{border-bottom:none}
+  .step-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--blood-dim);flex-shrink:0;min-width:28px;padding-top:1px}
+  .step-text{font-size:13px;color:var(--text-dim);line-height:1.65}
+  .step-text strong{color:var(--bone)}
+  .step-text .item{color:var(--amber);font-family:'JetBrains Mono',monospace;font-size:11px;background:rgba(232,160,0,0.08);padding:1px 6px;border:1px solid rgba(232,160,0,0.2)}
+  .step-text .key-item{color:var(--amber)}
+
+  /* INLINE BOXES */
+  .tip-box{background:rgba(0,60,0,0.1);border:1px solid #2a4a2a;padding:12px 16px;margin:12px 0;display:flex;gap:10px}
+  .tip-text{font-size:12px;color:var(--text-dim);line-height:1.6}
+  .tip-text strong{color:var(--green-bright)}
+  .warning-box{background:rgba(139,0,0,0.1);border:1px solid var(--blood-dim);padding:12px 16px;margin:12px 0;display:flex;gap:10px}
+  .warning-text{font-size:12px;color:var(--bone);line-height:1.6}
+  .warning-text strong{color:var(--rust)}
+  .loot-box{background:rgba(232,160,0,0.05);border:1px solid rgba(232,160,0,0.2);padding:12px 16px;margin:12px 0}
+  .loot-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--amber);margin-bottom:8px}
+  .loot-items{display:flex;flex-wrap:wrap;gap:6px}
+  .loot-item{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-dim);background:rgba(232,160,0,0.06);border:1px solid rgba(232,160,0,0.15);padding:2px 8px}
+
+  /* OVERVIEW CARD */
+  .overview-card{background:var(--ink-mid);border:1px solid var(--ink-border);padding:24px;margin-bottom:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .overview-stat{}
+  .overview-stat-num{font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:600;color:var(--amber);display:block;line-height:1}
+  .overview-stat-label{font-size:11px;color:var(--text-dim);margin-top:4px;letter-spacing:0.05em}
+  .overview-desc{grid-column:1/-1;font-size:13px;color:var(--text-dim);line-height:1.7;padding-top:16px;border-top:1px solid var(--ink-border)}
+
+  /* AREA DIVIDER */
+  .area-divider{height:1px;background:linear-gradient(90deg,var(--blood-dim),transparent);margin:0 0 80px}
+
+  /* QUICK LINKS */
+  .quick-links{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:28px}
+  .quick-link{background:var(--ink-mid);border:1px solid var(--ink-border);padding:14px 16px;text-decoration:none;display:flex;align-items:center;gap:10px;transition:all 0.2s}
+  .quick-link:hover{background:var(--ink-light);border-color:var(--blood-dim)}
+  .quick-link-icon{font-size:18px;flex-shrink:0}
+  .quick-link-text{font-size:12px;color:var(--ash)}
+  .quick-link-text strong{display:block;color:var(--bone);font-size:13px;margin-bottom:1px}
+
+  footer{background:var(--ink-mid);border-top:1px solid var(--ink-border);padding:28px 48px;display:flex;justify-content:space-between;align-items:center}
+  .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:0.12em;color:var(--ash);text-decoration:none}
+  .footer-logo span{color:var(--blood-dim)}
+  .footer-note{font-size:11px;color:var(--text-dim)}
+
+  @media(max-width:900px){
+    .walkthrough-layout{grid-template-columns:1fr}
+    .sidebar{display:none}
+    .main-content{padding:32px 24px 60px}
+    .page-header{padding:36px 24px 32px}
+    .area-nav{padding:0 16px}
+    .overview-card{grid-template-columns:repeat(2,1fr)}
+    .quick-links{grid-template-columns:1fr}
+    nav{padding:0 16px}
+    .nav-links{display:none}
+    footer{flex-direction:column;gap:12px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">RE<span>9</span>GUIDE</a>
+  <ul class="nav-links">
+    <li><a href="walkthrough.html" class="active">Walkthrough</a></li>
+    <li><a href="puzzles.html">Puzzles &amp; Codes</a></li>
+    <li><a href="bosses.html">Bosses</a></li>
+    <li><a href="collectibles.html">Collectibles</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">RE9 Guide</a> &rsaquo; Walkthrough</div>
+  <h1 class="page-title">Complete <span>Walkthrough</span></h1>
+  <p class="page-desc">Step-by-step walkthrough for all four areas of Resident Evil Requiem. Covers both Leon S. Kennedy and Grace Ashcroft campaigns, with all key items, puzzle solutions, and survival tips.</p>
+  <div class="page-meta">
+    <span class="meta-pill">Areas: <strong>4</strong></span>
+    <span class="meta-pill">Playtime: <strong>~12&ndash;16 hrs</strong></span>
+    <span class="meta-pill">Difficulty: <strong>Normal (Modern)</strong></span>
+    <span class="meta-pill">Characters: <strong>Leon &amp; Grace</strong></span>
+  </div>
+</div>
+
+<div class="area-nav">
+  <a href="#wrenwood" class="area-tab active">01 &mdash; Wrenwood Hotel</a>
+  <a href="#rhodes-hill" class="area-tab">02 &mdash; Rhodes Hill</a>
+  <a href="#raccoon-city" class="area-tab">03 &mdash; Raccoon City</a>
+  <a href="#ark" class="area-tab">04 &mdash; The ARK</a>
+</div>
+
+<div class="walkthrough-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Area 01</div>
+      <ul class="sidebar-links">
+        <li><a href="#w-hotel-lobby" class="current">Hotel Lobby</a></li>
+        <li><a href="#w-dining-room">Dining Room &amp; Parlor</a></li>
+        <li><a href="#w-upper-floors">Upper Floors (2F&ndash;4F)</a></li>
+        <li><a href="#w-basement">Hotel Basement</a></li>
+        <li><a href="#w-chunk">Boss: Chunk</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Area 02</div>
+      <ul class="sidebar-links">
+        <li><a href="#rh-reception">Care Center Reception</a></li>
+        <li><a href="#rh-east-wing">East Wing (2F)</a></li>
+        <li><a href="#rh-directors">Director's Office</a></li>
+        <li><a href="#rh-basement">Sterilization Chamber</a></li>
+        <li><a href="#rh-keeper">Boss: The Keeper</a></li>
+        <li><a href="#rh-sub-basement">Sub-Basement</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Area 03</div>
+      <ul class="sidebar-links">
+        <li><a href="#rc-streets">Raccoon City Streets</a></li>
+        <li><a href="#rc-rpd">Raccoon Police Dept.</a></li>
+        <li><a href="#rc-mr-x">Boss: Mr. X (Chase)</a></li>
+        <li><a href="#rc-sewers">Underground Sewers</a></li>
+        <li><a href="#rc-super-tyrant">Boss: Super Tyrant</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Area 04</div>
+      <ul class="sidebar-links">
+        <li><a href="#ark-hangar">ARK Hangar</a></li>
+        <li><a href="#ark-labs">Research Labs A &amp; B</a></li>
+        <li><a href="#ark-tower">Control Tower</a></li>
+        <li><a href="#ark-emily">Boss: Mutated Emily</a></li>
+        <li><a href="#ark-final">Final Puzzle &amp; Ending</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Guides</div>
+      <ul class="sidebar-links">
+        <li><a href="puzzles.html">&#128272; All Safe Codes</a></li>
+        <li><a href="bosses.html">&#128128; Boss Strategies</a></li>
+        <li><a href="collectibles.html">&#129437; All Collectibles</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- AREA 01: WRENWOOD HOTEL                 -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="area-block" id="wrenwood">
+      <div class="area-block-header">
+        <span class="area-number">AREA 01</span>
+        <div>
+          <div class="area-block-title">Wrenwood Hotel</div>
+          <div class="area-subtitle">The opening area &mdash; introduces core mechanics, crafting basics, and your first boss.</div>
+          <div class="area-chars">
+            <span class="char-badge char-badge-leon">Leon (lead)</span>
+            <span class="char-badge char-badge-grace">Grace (intro)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="overview-card">
+        <div class="overview-stat"><span class="overview-stat-num">5</span><div class="overview-stat-label">Chapters</div></div>
+        <div class="overview-stat"><span class="overview-stat-num">6</span><div class="overview-stat-label">Antique Coins</div></div>
+        <div class="overview-stat"><span class="overview-stat-num">5</span><div class="overview-stat-label">Mr. Raccoons</div></div>
+        <div class="overview-desc">Wrenwood Hotel sets the tone of the game. Leon is your primary character here &mdash; aggressive, weapon-heavy, with a parry system. The hotel teaches resource management and introduces the Roulette Wheel puzzle. Ends with the Chunk boss fight. Grace's brief intro section here is mostly cinematic.</div>
+      </div>
+
+      <div class="quick-links">
+        <a href="puzzles.html#wrenwood" class="quick-link"><div class="quick-link-icon">&#128272;</div><div class="quick-link-text"><strong>Hotel Safe Codes</strong>All combinations</div></a>
+        <a href="collectibles.html#mr-raccoon" class="quick-link"><div class="quick-link-icon">&#129437;</div><div class="quick-link-text"><strong>Mr. Raccoon #01&ndash;05</strong>All Wrenwood locations</div></a>
+        <a href="bosses.html#chunk" class="quick-link"><div class="quick-link-icon">&#128128;</div><div class="quick-link-text"><strong>Chunk Boss Guide</strong>Weak points &amp; strategy</div></a>
+      </div>
+
+      <!-- Chapter 1 -->
+      <div class="chapter-list">
+        <div class="chapter-card open" id="w-hotel-lobby">
+          <div class="chapter-header" onclick="toggleChapter(this)">
+            <span class="chapter-num">01</span>
+            <span class="chapter-title">Hotel Lobby &amp; Arrival</span>
+            <span class="chapter-meta">Leon &mdash; Combat intro</span>
+            <span class="chapter-toggle">&#9660;</span>
+          </div>
+          <div class="chapter-body">
+            <ul class="step-list">
+              <li class="step-item"><span class="step-num">01</span><div class="step-text">After the opening cutscene, take control of Leon at the hotel entrance. Head through the main doors — the front desk area is your first exploration zone.</div></li>
+              <li class="step-item"><span class="step-num">02</span><div class="step-text">Check behind the front desk for <span class="item">Handgun Ammo &times;8</span>. The <strong>Mr. Raccoon #01</strong> statue is on the shelf behind the check-in monitor — shoot it now.</div></li>
+              <li class="step-item"><span class="step-num">03</span><div class="step-text">Open <strong>Safe #1</strong> behind the reception counter. Code: <strong>R36 &middot; L08 &middot; R52</strong> (Normal). Contains <span class="item">Shotgun Shells &times;8</span> + <span class="item">Handgun Ammo &times;12</span>.</div></li>
+              <li class="step-item"><span class="step-num">04</span><div class="step-text">Examine the guest register on the desk for <strong>File #1</strong>. This introduces the game's lore — reads fast, worth skimming for context.</div></li>
+              <li class="step-item"><span class="step-num">05</span><div class="step-text">First infected enemy appears in the lobby hallway. This is your tutorial fight — practice the <strong>parry timing</strong> here before moving on. Parry window: 0.3s before impact.</div></li>
+              <li class="step-item"><span class="step-num">06</span><div class="step-text">Proceed through the door east of the front desk toward the Dining Room. Pick up the <span class="item">Typewriter Ribbon</span> from the table near the hall entrance — this is your save resource on Insanity/Classic.</div></li>
+            </ul>
+            <div class="loot-box">
+              <div class="loot-label">Key Items in this section</div>
+              <div class="loot-items">
+                <span class="loot-item">File #1 &mdash; Guest Register</span>
+                <span class="loot-item">Handgun Ammo &times;8</span>
+                <span class="loot-item">Shotgun Shells &times;8 (safe)</span>
+                <span class="loot-item">Typewriter Ribbon</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chapter 2 -->
+        <div class="chapter-card" id="w-dining-room">
+          <div class="chapter-header" onclick="toggleChapter(this)">
+            <span class="chapter-num">02</span>
+            <span class="chapter-title">Dining Room, Parlor &amp; Roulette Puzzle</span>
+            <span class="chapter-meta">Leon &mdash; First puzzle</span>
+            <span class="chapter-toggle">&#9660;</span>
+          </div>
+          <div class="chapter-body">
+            <ul class="step-list">
+              <li class="step-item"><span class="step-num">01</span><div class="step-text">Enter the Dining Room. Shoot <strong>Mr. Raccoon #02</strong> on the top shelf of the wine rack, far left corner — look up at the shelving unit.</div></li>
+              <li class="step-item"><span class="step-num">02</span><div class="step-text">Clear 3 infected in the dining room. Use hatchet finishers on staggered enemies to conserve ammo — after a headshot stagger, press melee for the hatchet kill.</div></li>
+              <li class="step-item"><span class="step-num">03</span><div class="step-text">Find <span class="item">Antique Coin #01</span> inside the small potted plant on the left side of reception (examine, don't just pass by).</div></li>
+              <li class="step-item"><span class="step-num">04</span><div class="step-text">Enter the Parlor through the west hallway door. The <strong>Roulette Wheel puzzle</strong> is here — examine the painting above the fireplace first to read the color sequence.</div></li>
+              <li class="step-item"><span class="step-num">05</span><div class="step-text"><strong>Roulette solution: RED &mdash; BLACK &mdash; RED &mdash; RED &mdash; BLACK.</strong> Interact with the wheel and spin to each color. Reward: <span class="item">Parlor Key</span> + <span class="item">Antique Coin #04</span>.</div></li>
+              <li class="step-item"><span class="step-num">06</span><div class="step-text">While in the Parlor, collect <span class="item">Antique Coin #05</span> from the bar counter and <span class="item">Antique Coin #06</span> by destroying the porcelain container behind the bar.</div></li>
+              <li class="step-item"><span class="step-num">07</span><div class="step-text">Use the Parlor Key to unlock the back room. Inside: <span class="item">Shotgun (W-870)</span> — your most important early weapon. Pick it up.</div></li>
+            </ul>
+            <div class="tip-box"><div class="tip-text"><strong>Tip:</strong> Spend Antique Coins at the Parlor lockers now. Prioritize the Hip Pouch (3 coins) for extra inventory slots immediately — it makes the entire hotel section more comfortable.</div></div>
+            <div class="loot-box">
+              <div class="loot-label">Key Items</div>
+              <div class="loot-items">
+                <span class="loot-item">Parlor Key</span>
+                <span class="loot-item">Shotgun (W-870)</span>
+                <span class="loot-item">Antique Coins #01, #04, #05, #06</span>
+                <span class="loot-item">Mr. Raccoon #02</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chapter 3 -->
+        <div class="chapter-card" id="w-upper-floors">
+          <div class="chapter-header" onclick="toggleChapter(this)">
+            <span class="chapter-num">03</span>
+            <span class="chapter-title">Upper Floors (2F &ndash; 4F)</span>
+            <span class="chapter-meta">Leon &mdash; Exploration</span>
+            <span class="chapter-toggle">&#9660;</span>
+          </div>
+          <div class="chapter-body">
+            <ul class="step-list">
+              <li class="step-item"><span class="step-num">01</span><div class="step-text">Take the main staircase up to 2F. The hallway has 2 infected — use shotgun on the closer one, hatchet finish the second to save shells.</div></li>
+              <li class="step-item"><span class="step-num">02</span><div class="step-text">Room 204 (unlocked): contains a <span class="item">First Aid Spray</span> and a note pointing you toward the roof. Room 207 is locked — you need the <strong>Master Key</strong> from the basement later.</div></li>
+              <li class="step-item"><span class="step-num">03</span><div class="step-text">3F: The Manager's Office has a typewriter save point — <strong>save here</strong> before proceeding if on Insanity/Classic mode.</div></li>
+              <li class="step-item"><span class="step-num">04</span><div class="step-text">4F fire escape access: head to the east end of the hallway, push through the emergency exit door. This leads to the roof.</div></li>
+              <li class="step-item"><span class="step-num">05</span><div class="step-text"><strong>Mr. Raccoon #05</strong> is on the roof northeast corner near the water tower base. Shoot it before proceeding down the external fire stairs.</div></li>
+              <li class="step-item"><span class="step-num">06</span><div class="step-text">The roof also has a crate with <span class="item">Antique Coin #02</span> hidden behind the overturned soup tureen (technically connects to the dining room back exit). Collect it if missed earlier.</div></li>
+              <li class="step-item"><span class="step-num">07</span><div class="step-text">Pick up <span class="item">File #3 &mdash; Manager's Memo</span> from the desk in the Manager's Office — it hints at the basement keycard location.</div></li>
+            </ul>
+            <div class="warning-box"><div class="warning-text"><strong>Don't miss:</strong> Room 207 requires the Master Key from the basement. Come back after getting it — it contains the <strong>Shotgun Stock upgrade</strong> which significantly improves handling.</div></div>
+          </div>
+        </div>
+
+        <!-- Chapter 4 -->
+        <div class="chapter-card" id="w-basement">
+          <div class="chapter-header" onclick="toggleChapter(this)">
+            <span class="chapter-num">04</span>
+            <span class="chapter-title">Hotel Basement &amp; Generator Room</span>
+            <span class="chapter-meta">Leon &mdash; Pre-boss prep</span>
+            <span class="chapter-toggle">&#9660;</span>
+          </div>
+          <div class="chapter-body">
+            <ul class="step-list">
+              <li class="step-item"><span class="step-num">01</span><div class="step-text">Take the stairwell down to B1. The basement corridor is dark — infected here react to sound, so walk (hold crouch-walk) past the first two unless you need blood samples (Grace players).</div></li>
+              <li class="step-item"><span class="step-num">02</span><div class="step-text"><strong>Mr. Raccoon #03</strong> is in the Generator Room on the pipe junction near the east wall — it's behind the large pipe, easy to miss. Shoot it before the boss fight area.</div></li>
+              <li class="step-item"><span class="step-num">03</span><div class="step-text">Find the <span class="item">Basement Master Key</span> hanging on the hook inside the generator room. This unlocks Room 207 upstairs — go back for the Shotgun Stock if you want it now.</div></li>
+              <li class="step-item"><span class="step-num">04</span><div class="step-text">Storage room adjacent to generator: <span class="item">Antique Coin #03</span> inside a cardboard box near the south shelving. Destroy the box.</div></li>
+              <li class="step-item"><span class="step-num">05</span><div class="step-text"><strong>Optional boss: The Amalgam</strong> is accessible through the locked south door (Basement Key from Room 207). High reward — Crimson Skull Gem worth 12,000 CP. Fight it if you have shells to spare.</div></li>
+              <li class="step-item"><span class="step-num">06</span><div class="step-text">Proceed through the boiler room corridor to reach the pre-boss staging area. A typewriter is just before the Chunk arena — <strong>save here</strong>.</div></li>
+              <li class="step-item"><span class="step-num">07</span><div class="step-text">Stock up: you want at least <strong>12 Shotgun Shells</strong> and <strong>2 Flash Grenades</strong> going into the Chunk fight. Craft if needed using gunpowder from the shelves nearby.</div></li>
+            </ul>
+            <div class="loot-box">
+              <div class="loot-label">Key Items</div>
+              <div class="loot-items">
+                <span class="loot-item">Basement Master Key</span>
+                <span class="loot-item">Antique Coin #03</span>
+                <span class="loot-item">Mr. Raccoon #03</span>
+                <span class="loot-item">Typewriter (save point)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chapter 5: Boss -->
+        <div class="chapter-card" id="w-chunk">
+          <div class="chapter-header" onclick="toggleChapter(this)">
+            <span class="chapter-num">05</span>
+            <span class="chapter-title">Boss Fight: Chunk</span>
+            <span class="chapter-meta">Leon &amp; Grace &mdash; Area boss</span>
+            <span class="chapter-toggle">&#9660;</span>
+          </div>
+          <div class="chapter-body">
+            <ul class="step-list">
+              <li class="step-item"><span class="step-num">01</span><div class="step-text"><strong>Phase 1:</strong> Stay mobile and circle the arena. Chunk telegraphs his charge 1.5 seconds before executing — the pull-back animation is your cue. Fire 2 shotgun blasts into his exposed chest during the wind-up.</div></li>
+              <li class="step-item"><span class="step-num">02</span><div class="step-text">After ~4 shotgun blasts, he enters <strong>Phase 2</strong> — a glowing mutation appears on his back. Do NOT waste ammo on his front now.</div></li>
+              <li class="step-item"><span class="step-num">03</span><div class="step-text"><strong>Phase 2:</strong> Throw a Flash Grenade to stagger him, then sprint around to his back and dump 3&ndash;4 shotgun shells into the glowing mass. Repeat once more to finish the fight.</div></li>
+              <li class="step-item"><span class="step-num">04</span><div class="step-text"><strong>Grace players only:</strong> Craft 3 Hemolytic Injectors before the fight (kill the 3 zombies in the hallway outside the boss room for infected blood). Injecting all 3 when the back mutation is exposed ends Phase 2 instantly — saves all your ammo.</div></li>
+              <li class="step-item"><span class="step-num">05</span><div class="step-text">After Chunk dies, loot <span class="item">Chunk's Keycard</span> from his body — required to exit the basement. Leon also receives the <span class="item">Hatchet: Mortal Edge</span> upgrade — unequip your current hatchet to equip it.</div></li>
+              <li class="step-item"><span class="step-num">06</span><div class="step-text">Use Chunk's Keycard on the locked door at the far end of the arena. Cutscene plays, transitioning to Rhodes Hill.</div></li>
+            </ul>
+            <div class="tip-box"><div class="tip-text"><strong>Full boss guide:</strong> See the <a href="bosses.html#chunk" style="color:var(--amber)">Chunk Boss Strategy page</a> for detailed phase breakdowns, weak points, and Insanity difficulty tips.</div></div>
+            <div class="loot-box">
+              <div class="loot-label">Boss Drops</div>
+              <div class="loot-items">
+                <span class="loot-item">Chunk's Keycard</span>
+                <span class="loot-item">Hatchet: Mortal Edge (Leon)</span>
+                <span class="loot-item">Shotgun Shells &times;3 (arena)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- end chapter-list -->
+    </div><!-- end area-block wrenwood -->
+
+    <div class="area-divider"></div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- AREA 02: RHODES HILL                    -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="area-block" id="rhodes-hill">
+      <div class="area-block-header">
+        <span class="area-number">AREA 02</span>
+        <div>
+          <div class="area-block-title">Rhodes Hill Chronic Care Center</div>
+          <div class="area-subtitle">Grace's primary area. Survival horror tone, tight resources, blood crafting mechanic introduced.</div>
+          <div class="area-chars">
+            <span class="char-badge char-badge-grace">Grace (lead)</span>
+            <span class="char-badge char-badge-leon">Leon (brief sections)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="overview-card">
+        <div class="overview-stat"><span class="overview-stat-num">6</span><div class="overview-stat-label">Chapters</div></div>
+        <div class="overview-stat"><span class="overview-stat-num">5</span><div class="overview-stat-label">Antique Coins</div></div>
+        <div class="overview-stat"><span class="overview-stat-num">6</span><div class="overview-stat-label">Mr. Raccoons</div></div>
+        <div class="overview-desc">Rhodes Hill is a sprawling multi-floor care center. Grace's gameplay leans into stealth and resource scarcity — she has less firepower than Leon but her blood-crafting system rewards careful play. The Quartz Door puzzle and Keeper boss fight are the highlights of this area.</div>
+      </div>
+
+      <div class="quick-links">
+        <a href="puzzles.html#rhodes-hill" class="quick-link"><div class="quick-link-icon">&#128272;</div><div class="quick-link-text"><strong>Rhodes Hill Codes</strong>Safes #2, #3, #4 + Quartz Door</div></a>
+        <a href="collectibles.html#mr-raccoon" class="quick-link"><div class="quick-link-icon">&#129437;</div><div class="quick-link-text"><strong>Mr. Raccoon #06&ndash;11</strong>All Rhodes Hill locations</div></a>
+        <a href="bosses.html#keeper" class="quick-link"><div class="quick-link-icon">&#128128;</div><div class="quick-link-text"><strong>The Keeper Boss Guide</strong>Parry strategy &amp; drops</div></a>
+      </div>
+
+      <div class="chapter-list">
+        <div class="chapter-card" id="rh-reception">
+          <div class="chapter-header" onclick="toggleChapter(this)">
+            <span class="chapter-num">01</span>
+            <span class="chapter-title">Care Center Reception &amp; Blood Crafting Intro</span>
+            <span class="chapter-meta">Grace &mdash; Mechanic introduction</span>
+            <span class="chapter-toggle">&#9660;</span>
+          </div>
+          <div class="chapter-body">
+            <ul class="step-list">
+              <li class="step-item"><span class="step-num">01</span><div class="step-text">Grace arrives at the care center entrance. Unlike Leon, her default pistol has limited ammo — prioritize stealth over direct combat wherever possible.</div></li>
+              <li class="step-item"><span class="step-num">02</span><div class="step-text"><strong>Mr. Raccoon #06</strong> is immediately visible on the left window of the reception area, facing outside. Shoot it from the entrance hallway.</div></li>
+              <li class="step-item"><span class="step-num">03</span><div class="step-text">The <strong>Blood Crafting</strong> tutorial triggers here — kill the infected behind the reception desk to collect <span class="item">Infected Blood &times;3</span>. Open the crafting menu and create a <span class="item">Blood Coagulant</span> (healing item).</div></li>
+              <li class="step-item"><span class="step-num">04</span><div class="step-text">Collect <span class="item">Antique Coin #07</span> from the waiting room — under the right-side chair. Crouch and examine the floor.</div></li>
+              <li class="step-item"><span class="step-num">05</span><div class="step-text">First typewriter save point is in the side room off the reception lobby. Save here — the care center is large and you don't want to redo the arrival section.</div></li>
+              <li class="step-item"><span class="step-num">06</span><div class="step-text">Head through the double doors marked "Ward A" to proceed to the East Wing stairwell.</div></li>
+            </ul>
+            <div class="warning-box"><div class="warning-text"><strong>Grace players:</strong> Don't skip blood collection. Infected Blood is your primary crafting resource for healing items, door-opening chemicals, and combat injectors. Kill enemies in every room before moving on — you'll need the stockpile.</div></div>
+          </div>
+        </div>
+
+        <div class="chapter-card" id="rh-east-wing">
+          <div class="chapter-header" onclick="toggleChapter(this)">
+            <span class="chapter-num">02</span>
+            <span class="chapter-title">East Wing (2F) &amp; Nurse's Station</span>
+            <span class="chapter-meta">Grace &mdash; Exploration &amp; safe</span>
+            <span class="chapter-toggle">&#9660;</span>
+          </div>
+          <div class="chapter-body">
+            <ul class="step-list">
+              <li class="step-item"><span class="step-num">01</span><div class="step-text">Take the Ward A stairwell to 2F. The East Wing hallway has 4 infected — use stealth to sneak past the first two, then deal with the pair near the nurses' station (they can't see you from behind the nursing cart).</div></li>
+              <li class="step-item"><span class="step-num">02</span><div class="step-text"><strong>Safe #2</strong> is behind the nurses' desk. Code: <strong>L22 &middot; R50 &middot; L14</strong> (Normal) / <strong>R68 &middot; L34 &middot; R90</strong> (Insanity). Contains <span class="item">Ink Ribbon &times;2</span> + <span class="item">First Aid Spray</span>.</div></li>
+              <li class="step-item"><span class="step-num">03</span><div class="step-text">Collect <span class="item">Antique Coin #08</span> from the nurses' station counter, right side.</div></li>
+              <li class="step-item"><span class="step-num">04</span><div class="step-text"><strong>Mr. Raccoon #07</strong> is inside a medical supply cart in the hallway — the cart door requires the East Wing Keycard, which you get later from the Quartz Door puzzle. Come back for this one.</div></li>
+              <li class="step-item"><span class="step-num">05</span><div class="step-text">Find <span class="item">File #12 &mdash; Patient Transfer Record</span> in the examination room — it hints at the Director's Office location and gives background on the outbreak.</div></li>
+              <li class="step-item"><span class="step-num">06</span><div class="step-text">Exit the East Wing through the connecting corridor north to reach the Central Hall, where the Quartz Door is located.</div></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="chapter-card" id="rh-directors">
+          <div class="chapter-header" onclick="toggleChapter(this)">
+            <span class="chapter-num">03</span>
+            <span class="chapter-title">Director's Office &amp; Quartz Door Puzzle</span>
+            <span class="chapter-meta">Grace &mdash; Key puzzle sequence</span>
+            <span class="chapter-toggle">&#9660;</span>
+          </div>
+          <div class="chapter-body">
+            <ul class="step-list">
+              <li class="step-item"><span class="step-num">01</span><div class="step-text">The Director's Office is on 3F West Wing. Take the Central Hall staircase up — there's a Banshee-type enemy near the 3F landing. Back away to trigger its patrol pattern, then slip past when it turns.</div></li>
+              <li class="step-item"><span class="step-num">02</span><div class="step-text"><strong>Safe #3</strong> in the Director's Office. Code: <strong>R04 &middot; L72 &middot; R38</strong> (Normal) / <strong>L16 &middot; R60 &middot; L82</strong> (Insanity). Contains <span class="item">Hip Pouch</span> upgrade — expands inventory by 2 slots.</div></li>
+              <li class="step-item"><span class="step-num">03</span><div class="step-text"><strong>Mr. Raccoon #08</strong> is on the Director's bookshelf, 3rd shelf from the top, right side. It's small — scan the shelves carefully.</div></li>
+              <li class="step-item"><span class="step-num">04</span><div class="step-text">Examine the puzzle safe in the Chairman's Office (adjacent to Director's Office) to collect <span class="item">Moon Quartz</span> and <span class="item">Antique Coin #09</span> from the bookcase near the window.</div></li>
+              <li class="step-item"><span class="step-num">05</span><div class="step-text">Return to the <strong>Quartz Door</strong> in Central Hall. Insert the Moon Quartz and input the sequence: <strong>Moon &rarr; Sun &rarr; Star &rarr; Moon</strong>. Reward: <span class="item">East Wing Keycard</span> + Upgrade item.</div></li>
+              <li class="step-item"><span class="step-num">06</span><div class="step-text">Now backtrack to 2F East Wing to collect <strong>Mr. Raccoon #07</strong> from the supply cart using the East Wing Keycard.</div></li>
+            </ul>
+            <div class="tip-box"><div class="tip-text"><strong>Quartz Door shortcut:</strong> You can go directly to the Director's Office without clearing the entire 2F first. The Quartz Door unlocks a significant shortcut back through the care center — solve it before exploring the Basement.</div></div>
+          </div>
+        </div>
+
+        <div class="chapter-card" id="rh-basement">
+          <div class="chapter-header" onclick="toggleChapter(this)">
+            <span class="chapter-num">04</span>
+            <span class="chapter-title">Sterilization Chamber &amp; Basement</span>
+            <span class="chapter-meta">Grace &mdash; Resource-critical section</span>
+            <span class="chapter-toggle">&#9660;</span>
+          </div>
+          <div class="chapter-body">
+            <ul class="step-list">
+              <li class="step-item"><span class="step-num">01</span><div class="step-text">Take the service elevator from 1F to B1. The Sterilization Chamber is straight ahead — there's a large enemy patrolling. Sneak along the left wall to avoid it.</div></li>
+              <li class="step-item"><span class="step-num">02</span><div class="step-text"><strong>Safe #4</strong> is on the window side of the Sterilization Chamber. Sneak past the enemy to reach it. Code: <strong>R10 &middot; L90 &middot; R20</strong> (Normal) / <strong>L80 &middot; R50 &middot; L00</strong> (Insanity). Contains <span class="item">Stabilizer</span>.</div></li>
+              <li class="step-item"><span class="step-num">03</span><div class="step-text"><strong>Mr. Raccoon #09</strong> is on a trolley in the far corner of the Sterilization Chamber, behind the enemy. Sneak or kill the enemy first, then collect.</div></li>
+              <li class="step-item"><span class="step-num">04</span><div class="step-text">The Chemical Storage room is accessible from the south corridor — pick up the <span class="item">Bottle of Acid</span> from the table. This is used to dissolve the door lock to the Sub-Basement later.</div></li>
+              <li class="step-item"><span class="step-num">05</span><div class="step-text">Collect <span class="item">File #71 &mdash; Sterilization Chamber Safe</span> note (the in-game hint for Safe #4) and <span class="item">Antique Coin #10</span> from the Morgue examination table (B2, accessible from the service stairs).</div></li>
+              <li class="step-item"><span class="step-num">06</span><div class="step-text">Proceed through the locked Sub-Basement door using the Acid Bottle. This leads to The Keeper boss fight area.</div></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="chapter-card" id="rh-keeper">
+          <div class="chapter-header" onclick="toggleChapter(this)">
+            <span class="chapter-num">05</span>
+            <span class="chapter-title">Boss Fight: The Keeper</span>
+            <span class="chapter-meta">Grace only &mdash; Parry duel</span>
+            <span class="chapter-toggle">&#9660;</span>
+          </div>
+          <div class="chapter-body">
+            <ul class="step-list">
+              <li class="step-item"><span class="step-num">01</span><div class="step-text">The Keeper is a close-quarters duel, not a traditional arena fight. Your hatchet and parry system are your primary tools — guns are inefficient here.</div></li>
+              <li class="step-item"><span class="step-num">02</span><div class="step-text"><strong>Phase 1:</strong> Watch for his attack animations. Parry the moment before impact (0.3 second window). A successful parry creates a 1-second hatchet window — immediately answer with melee. Sharpen the hatchet during every pause.</div></li>
+              <li class="step-item"><span class="step-num">03</span><div class="step-text"><strong>Phase 2:</strong> He begins mixing unparryable grab attacks, telegraphed by a brief left shoulder dip. On shoulder dip — dodge right, then punish his exposed left side during the 3-hit combo finisher.</div></li>
+              <li class="step-item"><span class="step-num">04</span><div class="step-text">After defeating him, collect <span class="item">Keeper's Key</span> from his body. This unlocks the Sub-Basement storage room with <strong>Mr. Raccoon #10</strong> and <span class="item">Antique Coin #11</span>.</div></li>
+            </ul>
+            <div class="tip-box"><div class="tip-text"><strong>Full boss guide:</strong> See <a href="bosses.html#keeper" style="color:var(--amber)">The Keeper Boss Strategy</a> for complete phase analysis and Insanity tips.</div></div>
+            <div class="loot-box">
+              <div class="loot-label">Boss Drops</div>
+              <div class="loot-items">
+                <span class="loot-item">Keeper's Key</span>
+                <span class="loot-item">Blood Vial &times;6</span>
+                <span class="loot-item">File: The Keeper's Journal</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chapter-card" id="rh-sub-basement">
+          <div class="chapter-header" onclick="toggleChapter(this)">
+            <span class="chapter-num">06</span>
+            <span class="chapter-title">Sub-Basement &amp; Exit</span>
+            <span class="chapter-meta">Grace &mdash; Area wrap-up</span>
+            <span class="chapter-toggle">&#9660;</span>
+          </div>
+          <div class="chapter-body">
+            <ul class="step-list">
+              <li class="step-item"><span class="step-num">01</span><div class="step-text">Use the Keeper's Key to access the Sub-Basement flooded storage room. <strong>Mr. Raccoon #10</strong> is on the walkway north wall, just above the waterline.</div></li>
+              <li class="step-item"><span class="step-num">02</span><div class="step-text"><strong>Mr. Raccoon #11</strong> is in the Morgue B2 — inside an open drawer, third row from the bottom, left side. Open all drawers in that row.</div></li>
+              <li class="step-item"><span class="step-num">03</span><div class="step-text">Collect <span class="item">Antique Coin #11</span> from the shelf in the flooded storage room.</div></li>
+              <li class="step-item"><span class="step-num">04</span><div class="step-text">The ARK Access Elevator is at the end of the Sub-Basement. Interact with the terminal — cutscene plays, transitioning to Raccoon City.</div></li>
+            </ul>
+            <div class="warning-box"><div class="warning-text"><strong>Before leaving Rhodes Hill:</strong> Make sure you have Mr. Raccoons #06&ndash;11, Antique Coins #07&ndash;11, and all Files from this area. The care center is not revisitable after the transition to Raccoon City.</div></div>
+          </div>
+        </div>
+      </div>
+    </div><!-- end rhodes hill -->
+
+    <div class="area-divider"></div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- AREA 03: RACCOON CITY                   -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="area-block" id="raccoon-city">
+      <div class="area-block-header">
+        <span class="area-number">AREA 03</span>
+        <div>
+          <div class="area-block-title">Raccoon City Ruins</div>
+          <div class="area-subtitle">Leon returns to the iconic city. Larger environments, more aggressive enemies, two major bosses.</div>
+          <div class="area-chars">
+            <span class="char-badge char-badge-leon">Leon (lead)</span>
+            <span class="char-badge char-badge-grace">Grace (select sections)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="overview-card">
+        <div class="overview-stat"><span class="overview-stat-num">5</span><div class="overview-stat-label">Chapters</div></div>
+        <div class="overview-stat"><span class="overview-stat-num">4</span><div class="overview-stat-label">Antique Coins</div></div>
+        <div class="overview-stat"><span class="overview-stat-num">6</span><div class="overview-stat-label">Mr. Raccoons</div></div>
+        <div class="overview-desc">Raccoon City is the largest area in the game. Mr. X pursues Leon through the RPD building in a relentless chase sequence, culminating in two boss encounters outside. Save your Magnum ammo from Safe #5 for the Super Tyrant fight.</div>
+      </div>
+
+      <div class="quick-links">
+        <a href="puzzles.html#raccoon-city" class="quick-link"><div class="quick-link-icon">&#128272;</div><div class="quick-link-text"><strong>Raccoon City Codes</strong>Safes #5 &amp; #6 + Power Grid</div></a>
+        <a href="collectibles.html#mr-raccoon" class="quick-link"><div class="quick-link-icon">&#129437;</div><div class="quick-link-text"><strong>Mr. Raccoon #12&ndash;17</strong>All Raccoon City locations</div></a>
+        <a href="bosses.html#mr-x" class="quick-link"><div class="quick-link-icon">&#128128;</div><div class="quick-link-text"><strong>Mr. X &amp; Super Tyrant</strong>Both boss strategies</div></a>
+      </div>
+
+      <div class="chapter-list">
+        <div class="chapter-card" id="rc-streets">
+          <div class="chapter-header" onclick="toggleChapter(this)">
+            <span class="chapter-num">01</span>
+            <span class="chapter-title">Raccoon City Streets</span>
+            <span class="chapter-meta">Leon &mdash; Open exploration</span>
+            <span class="chapter-toggle">&#9660;</span>
+          </div>
+          <div class="chapter-body">
+            <ul class="step-list">
+              <li class="step-item"><span class="step-num">01</span><div class="step-text">Leon arrives in the nuked ruins of Raccoon City. The street area is semi-open — explore before heading to the RPD. There are side streets to the north and south with supplies.</div></li>
+              <li class="step-item"><span class="step-num">02</span><div class="step-text"><strong>Mr. Raccoon #12</strong> is on a fire escape platform 2F level in the NW building cluster. Shoot it from across the street.</div></li>
+              <li class="step-item"><span class="step-num">03</span><div class="step-text">Find <span class="item">Antique Coin #12</span> inside a newspaper box near the first barricade — shoot the box to open it.</div></li>
+              <li class="step-item"><span class="step-num">04</span><div class="step-text">The <strong>Merchant's Stall</strong> is in the alley east of the main street. Use accumulated CP to upgrade your shotgun — the Reload Speed upgrade is the best value here for the upcoming RPD section.</div></li>
+              <li class="step-item"><span class="step-num">05</span><div class="step-text">Head toward the RPD building at the north end of the main street. The large front doors are your entry point.</div></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="chapter-card" id="rc-rpd">
+          <div class="chapter-header" onclick="toggleChapter(this)">
+            <span class="chapter-num">02</span>
+            <span class="chapter-title">Raccoon Police Department</span>
+            <span class="chapter-meta">Leon &mdash; Mr. X begins pursuit</span>
+            <span class="chapter-toggle">&#9660;</span>
+          </div>
+          <div class="chapter-body">
+            <ul class="step-list">
+              <li class="step-item"><span class="step-num">01</span><div class="step-text">Enter the RPD main lobby. <strong>Mr. Raccoon #13</strong> is on top of the RPD crest mosaic on the center floor — look down from the entrance. Shoot it before proceeding.</div></li>
+              <li class="step-item"><span class="step-num">02</span><div class="step-text">Collect <span class="item">Antique Coin #13</span> from the first aid kit mounted on the lobby wall.</div></li>
+              <li class="step-item"><span class="step-num">03</span><div class="step-text">Head down to the <strong>Generator Room (B1)</strong> and solve the <strong>Power Grid Puzzle</strong>: flip switches in order <strong>C &rarr; A &rarr; D &rarr; B</strong>. Wrong order spawns enemies and triggers the alarm.</div></li>
+              <li class="step-item"><span class="step-num">04</span><div class="step-text">With power restored, access the <strong>Evidence Room (B1)</strong>. Open <strong>Safe #5</strong>: <strong>R28 &middot; L66 &middot; R42</strong> (Normal). Contains <span class="item">Magnum Rounds &times;5</span> — save these for Super Tyrant, do not use them yet.</div></li>
+              <li class="step-item"><span class="step-num">05</span><div class="step-text"><strong>Mr. Raccoon #14</strong> is inside Evidence Box #7 on the shelf — interact with the box, not just the shelf surface.</div></li>
+              <li class="step-item"><span class="step-num">06</span><div class="step-text">Collect <span class="item">Antique Coin #14</span> from the RPD Armory gear locker — requires the RPD Armory Key found on an Officer corpse in the 1F east hallway.</div></li>
+              <li class="step-item"><span class="step-num">07</span><div class="step-text">Triggering the Security Room on 2F initiates the <strong>Mr. X chase sequence</strong>. Make sure you've collected everything before entering that room.</div></li>
+            </ul>
+            <div class="warning-box"><div class="warning-text"><strong>SAVE the Magnum Rounds</strong> from Safe #5. They're for the Super Tyrant boss fight — the Magnum is the most efficient weapon against his exposed heart. Using them on regular enemies will make the boss significantly harder.</div></div>
+          </div>
+        </div>
+
+        <div class="chapter-card" id="rc-mr-x">
+          <div class="chapter-header" onclick="toggleChapter(this)">
+            <span class="chapter-num">03</span>
+            <span class="chapter-title">Boss: Mr. X Chase &amp; Arena Fight</span>
+            <span class="chapter-meta">Leon only &mdash; Two phases</span>
+            <span class="chapter-toggle">&#9660;</span>
+          </div>
+          <div class="chapter-body">
+            <ul class="step-list">
+              <li class="step-item"><span class="step-num">01</span><div class="step-text"><strong>Chase Phase:</strong> Do NOT waste ammo. Mr. X cannot be stopped — only slowed temporarily. Run toward the upper-level arena, collecting ammo from side rooms as you go. Use ladders to create distance on stairs.</div></li>
+              <li class="step-item"><span class="step-num">02</span><div class="step-text"><strong>Mr. Raccoon #16</strong> is on the NF Building Rooftop during the chase — NW corner near the A/C unit. This is timed — shoot it while running or you'll miss it for this playthrough.</div></li>
+              <li class="step-item"><span class="step-num">03</span><div class="step-text"><strong>Arena Phase:</strong> Once the upper arena opens, the real fight begins. Shoot his mouth during punish windows (after big swing attacks). Use ladders to force movement angles.</div></li>
+              <li class="step-item"><span class="step-num">04</span><div class="step-text">When Mr. X goes to one knee (downed), sprint to his back and empty ammo into the <strong>back cyst</strong> — highest damage window of the fight. He rises after ~3 seconds.</div></li>
+              <li class="step-item"><span class="step-num">05</span><div class="step-text">Kite him near the <strong>explosive canisters</strong> in the arena corners at half health — they deal 3&times; normal gun damage when he's adjacent. One canister + shotgun blast can take ~20% of his health.</div></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="chapter-card" id="rc-sewers">
+          <div class="chapter-header" onclick="toggleChapter(this)">
+            <span class="chapter-num">04</span>
+            <span class="chapter-title">Underground Sewers</span>
+            <span class="chapter-meta">Leon &mdash; Pre-final boss prep</span>
+            <span class="chapter-toggle">&#9660;</span>
+          </div>
+          <div class="chapter-body">
+            <ul class="step-list">
+              <li class="step-item"><span class="step-num">01</span><div class="step-text">After defeating Mr. X, take the Parking Garage Key from his body. Exit through the RPD parking garage to reach the sewer access.</div></li>
+              <li class="step-item"><span class="step-num">02</span><div class="step-text"><strong>Mr. Raccoon #15</strong> is in the sewers on a ledge above the first water valve puzzle — jump up using the crates to the east.</div></li>
+              <li class="step-item"><span class="step-num">03</span><div class="step-text">Open <strong>Safe #6</strong> in the Sewers Control Room: <strong>L12 &middot; R84 &middot; L56</strong> (Normal). Contains the <span class="item">Scope</span> attachment for Leon's Sniper Rifle — useful for the rooftop section ahead.</div></li>
+              <li class="step-item"><span class="step-num">04</span><div class="step-text">Collect <span class="item">Antique Coin #15</span> from the desk next to the control panel in the Control Room.</div></li>
+              <li class="step-item"><span class="step-num">05</span><div class="step-text">The sewer exit brings you to the Central Square — the Super Tyrant arena. <strong>Save at the typewriter</strong> before exiting. Stock to 12+ Shotgun Shells and make sure Magnum Rounds are in your inventory.</div></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="chapter-card" id="rc-super-tyrant">
+          <div class="chapter-header" onclick="toggleChapter(this)">
+            <span class="chapter-num">05</span>
+            <span class="chapter-title">Boss Fight: Super Tyrant &amp; Area Exit</span>
+            <span class="chapter-meta">Leon &mdash; Area finale</span>
+            <span class="chapter-toggle">&#9660;</span>
+          </div>
+          <div class="chapter-body">
+            <ul class="step-list">
+              <li class="step-item"><span class="step-num">01</span><div class="step-text">Before the fight triggers: <strong>Mr. Raccoon #17</strong> is at the base of the war memorial statue in Central Square. Grab it now — it disappears after the boss fight starts.</div></li>
+              <li class="step-item"><span class="step-num">02</span><div class="step-text"><strong>Phases 1&ndash;2:</strong> Dump all 5 Magnum Rounds into his exposed chest heart. Move laterally at all times — his grab attack is instant-kill on Insanity.</div></li>
+              <li class="step-item"><span class="step-num">03</span><div class="step-text"><strong>Phase 3:</strong> He shields his heart with his arm blade. Shoot the blade with any weapon (~12 handgun rounds) until it shatters — then switch back to Magnum for the exposed heart.</div></li>
+              <li class="step-item"><span class="step-num">04</span><div class="step-text"><strong>At 25% HP:</strong> A helicopter airdrop lands a <span class="item">Rocket Launcher &times;1</span>. Pick it up immediately — it despawns after 30 seconds. One rocket to the chest ends the fight.</div></li>
+              <li class="step-item"><span class="step-num">05</span><div class="step-text">After the fight: collect the <span class="item">Raccoon City Survivor Badge</span> and <span class="item">ARK Access Code</span> from his remains. Cutscene plays — transition to The ARK.</div></li>
+            </ul>
+            <div class="tip-box"><div class="tip-text"><strong>Full boss guide:</strong> See <a href="bosses.html#super-tyrant" style="color:var(--amber)">Super Tyrant Boss Strategy</a> for phase-by-phase breakdown and Insanity difficulty notes.</div></div>
+          </div>
+        </div>
+      </div>
+    </div><!-- end raccoon city -->
+
+    <div class="area-divider"></div>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- AREA 04: THE ARK                        -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="area-block" id="ark">
+      <div class="area-block-header">
+        <span class="area-number">AREA 04</span>
+        <div>
+          <div class="area-block-title">The ARK</div>
+          <div class="area-subtitle">The final area. Both Leon and Grace converge. Contains the Point of No Return and the game's ending.</div>
+          <div class="area-chars">
+            <span class="char-badge char-badge-leon">Leon</span>
+            <span class="char-badge char-badge-grace">Grace</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="overview-card">
+        <div class="overview-stat"><span class="overview-stat-num">5</span><div class="overview-stat-label">Chapters</div></div>
+        <div class="overview-stat"><span class="overview-stat-num">2</span><div class="overview-stat-label">Antique Coins</div></div>
+        <div class="overview-stat"><span class="overview-stat-num">8</span><div class="overview-stat-label">Mr. Raccoons</div></div>
+        <div class="overview-desc">The ARK is the most linear area of the game. Both protagonists are playable here. Contains a Point of No Return before the final boss — make sure you've collected everything before passing through. The ending is determined by the Final Puzzle, not earlier choices.</div>
+      </div>
+
+      <div class="warning-box"><div class="warning-text"><strong>&#9888; POINT OF NO RETURN:</strong> The ARK Core Checkpoint door is irreversible. Before entering the final sector, ensure you have collected all Mr. Raccoons (#18&ndash;22), all Antique Coins, and all Files from the ARK. You cannot go back after this point.</div></div>
+
+      <div class="quick-links">
+        <a href="puzzles.html#ark" class="quick-link"><div class="quick-link-icon">&#128272;</div><div class="quick-link-text"><strong>ARK Safe Code</strong>Safe #7 + Final Puzzle</div></a>
+        <a href="collectibles.html#mr-raccoon" class="quick-link"><div class="quick-link-icon">&#129437;</div><div class="quick-link-text"><strong>Mr. Raccoon #18&ndash;25</strong>All ARK locations (some missable!)</div></a>
+        <a href="bosses.html#emily" class="quick-link"><div class="quick-link-icon">&#128128;</div><div class="quick-link-text"><strong>Mutated Emily</strong>Scripted encounter guide</div></a>
+      </div>
+
+      <div class="chapter-list">
+        <div class="chapter-card" id="ark-hangar">
+          <div class="chapter-header" onclick="toggleChapter(this)">
+            <span class="chapter-num">01</span>
+            <span class="chapter-title">ARK Hangar &amp; Entry</span>
+            <span class="chapter-meta">Both characters &mdash; Area arrival</span>
+            <span class="chapter-toggle">&#9660;</span>
+          </div>
+          <div class="chapter-body">
+            <ul class="step-list">
+              <li class="step-item"><span class="step-num">01</span><div class="step-text">Both Leon and Grace arrive at the ARK separately. The Hangar is a large open area — clear it thoroughly before moving on. Enemies here are faster and more aggressive than earlier areas.</div></li>
+              <li class="step-item"><span class="step-num">02</span><div class="step-text"><strong>Mr. Raccoon #18</strong> is on top of a cargo container near the east entrance. Climb the smaller containers to reach the larger one — it's on the flat top surface.</div></li>
+              <li class="step-item"><span class="step-num">03</span><div class="step-text">Collect <span class="item">Antique Coin #16</span> near the hangar entrance on a red equipment cart.</div></li>
+              <li class="step-item"><span class="step-num">04</span><div class="step-text">The <strong>Merchant</strong> has a stall in the southwest corner of the hangar — this is your last upgrade opportunity before the endgame. Prioritize Magnum damage upgrades if available.</div></li>
+              <li class="step-item"><span class="step-num">05</span><div class="step-text">Proceed through the blast doors to the Research Lab section.</div></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="chapter-card" id="ark-labs">
+          <div class="chapter-header" onclick="toggleChapter(this)">
+            <span class="chapter-num">02</span>
+            <span class="chapter-title">Research Labs A &amp; B</span>
+            <span class="chapter-meta">Both characters &mdash; Key safe + collectibles</span>
+            <span class="chapter-toggle">&#9660;</span>
+          </div>
+          <div class="chapter-body">
+            <ul class="step-list">
+              <li class="step-item"><span class="step-num">01</span><div class="step-text"><strong>Mr. Raccoon #19</strong> is in Lab A inside the specimen containment unit. The Lab Keycard to open it is found in the same room — check the desk near the entrance.</div></li>
+              <li class="step-item"><span class="step-num">02</span><div class="step-text"><strong>Mr. Raccoon #20</strong> is in Lab B on the typewriter desk itself — it's right at the save point, hard to miss. Save here before collecting it.</div></li>
+              <li class="step-item"><span class="step-num">03</span><div class="step-text">Collect <span class="item">Antique Coin #17</span> from the sample freezer in Lab A, second compartment.</div></li>
+              <li class="step-item"><span class="step-num">04</span><div class="step-text">Open <strong>Safe #7</strong> in Lab B (near the typewriter): <strong>R92 &middot; L24 &middot; R46</strong> (Normal) / <strong>L38 &middot; R70 &middot; L16</strong> (Insanity). Contains <span class="item">Override Manual</span> + <span class="item">Steroids</span> — the most valuable single safe in the game.</div></li>
+              <li class="step-item"><span class="step-num">05</span><div class="step-text">Collect <strong>Files #68 and #69</strong> (Product Catalogs 1 &amp; 2) from Lab B — these are the clues for the Final Puzzle. Read them carefully.</div></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="chapter-card" id="ark-tower">
+          <div class="chapter-header" onclick="toggleChapter(this)">
+            <span class="chapter-num">03</span>
+            <span class="chapter-title">Control Tower &amp; Point of No Return</span>
+            <span class="chapter-meta">Both characters &mdash; Last collectible chance</span>
+            <span class="chapter-toggle">&#9660;</span>
+          </div>
+          <div class="chapter-body">
+            <ul class="step-list">
+              <li class="step-item"><span class="step-num">01</span><div class="step-text"><strong>Mr. Raccoon #21</strong> is on Control Tower Level 3, behind the main console panel. Crouch to see it behind the desk.</div></li>
+              <li class="step-item"><span class="step-num">02</span><div class="step-text">The ARK Core Corridor leads to the Point of No Return door. Before approaching it: <strong>Mr. Raccoon #22</strong> is on a pipe junction 20m before the door — this is your last chance if on Insanity.</div></li>
+              <li class="step-item"><span class="step-num">03</span><div class="step-text"><strong>FINAL CHECKLIST before the Point of No Return door:</strong> Mr. Raccoons #18&ndash;22 collected &#10003; | All Antique Coins &#10003; | Files #68 &amp; #69 in inventory &#10003; | Ammo stocked &#10003;</div></li>
+              <li class="step-item"><span class="step-num">04</span><div class="step-text">Enter the ARK Core Checkpoint door when ready. This transition is permanent.</div></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="chapter-card" id="ark-emily">
+          <div class="chapter-header" onclick="toggleChapter(this)">
+            <span class="chapter-num">04</span>
+            <span class="chapter-title">Boss: Mutated Emily &amp; Core Chamber</span>
+            <span class="chapter-meta">Leon &mdash; Scripted encounter</span>
+            <span class="chapter-toggle">&#9660;</span>
+          </div>
+          <div class="chapter-body">
+            <ul class="step-list">
+              <li class="step-item"><span class="step-num">01</span><div class="step-text">Just past the Point of No Return door: collect <strong>Mr. Raccoon #23</strong> on the left wall immediately on entry, and <strong>Mr. Raccoon #24</strong> on the second console tier facing Grace's terminal.</div></li>
+              <li class="step-item"><span class="step-num">02</span><div class="step-text"><strong>Mr. Raccoon #25</strong> is hidden inside the broken monitor on the west wall — shoot the screen to reveal it, then shoot the statue.</div></li>
+              <li class="step-item"><span class="step-num">03</span><div class="step-text">The Mutated Emily encounter is <strong>fully scripted</strong>. When prompted, shoot her — do not hesitate or reload a save. This does NOT cause the bad ending. It is required for the good ending.</div></li>
+              <li class="step-item"><span class="step-num">04</span><div class="step-text">After the encounter, both Leon and Grace reconvene at the Final Puzzle terminals.</div></li>
+            </ul>
+            <div class="warning-box"><div class="warning-text"><strong>Common mistake:</strong> Players reload thinking shooting Emily causes the bad ending. It does not. The ending is 100% determined by the Final Puzzle inputs below. Shoot her to proceed.</div></div>
+          </div>
+        </div>
+
+        <div class="chapter-card" id="ark-final">
+          <div class="chapter-header" onclick="toggleChapter(this)">
+            <span class="chapter-num">05</span>
+            <span class="chapter-title">Final Puzzle &amp; Game Ending</span>
+            <span class="chapter-meta">Both characters &mdash; Ending branch</span>
+            <span class="chapter-toggle">&#9660;</span>
+          </div>
+          <div class="chapter-body">
+            <ul class="step-list">
+              <li class="step-item"><span class="step-num">01</span><div class="step-text">Two terminals appear: one for Grace, one for Leon. Both must be solved to get the true ending (Release Elpis). In solo mode, Leon's terminal auto-locks after Grace completes hers — solve Grace first.</div></li>
+              <li class="step-item"><span class="step-num">02</span><div class="step-text"><strong>Grace's Terminal (True Ending):</strong> <span class="key-item">BLOOD &rarr; MEMORY &rarr; REQUIEM &rarr; REBIRTH</span></div></li>
+              <li class="step-item"><span class="step-num">03</span><div class="step-text"><strong>Leon's Terminal (True Ending):</strong> <span class="key-item">TRUTH &rarr; SACRIFICE &rarr; ORDER &rarr; RELEASE</span></div></li>
+              <li class="step-item"><span class="step-num">04</span><div class="step-text">Both correct inputs trigger the <strong>Release Elpis ending cutscene</strong> — the true ending. Duration: approximately 12 minutes. Shows Emily's survival and the aftermath.</div></li>
+              <li class="step-item"><span class="step-num">05</span><div class="step-text">After the credits: <strong>New Game+</strong> unlocks with all weapons and upgrades carried over. Insanity difficulty also unlocks if not already available. Post-game CP farming and infinite ammo unlocks are now accessible.</div></li>
+            </ul>
+            <div class="tip-box"><div class="tip-text"><strong>Full final puzzle guide:</strong> See <a href="puzzles.html#special" style="color:var(--amber)">Final Puzzle Solution</a> for both ending branches and spoiler context.</div></div>
+            <div class="loot-box">
+              <div class="loot-label">Post-Game Unlocks</div>
+              <div class="loot-items">
+                <span class="loot-item">New Game+ (carry over weapons)</span>
+                <span class="loot-item">Insanity Difficulty</span>
+                <span class="loot-item">Infinite Ammo (unlock via CP)</span>
+                <span class="loot-item">Classic Costume DLC access</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- end ark -->
+
+  </main>
+</div><!-- end walkthrough-layout -->
+
+<footer>
+  <a href="index.html" class="footer-logo">RE<span>9</span>GUIDE</a>
+  <div class="footer-note">Fan-made guide &middot; Not affiliated with Capcom &middot; Resident Evil Requiem &copy; 2026 Capcom Co., Ltd.</div>
+</footer>
+
+<script>
+  function toggleChapter(header) {
+    const card = header.parentElement;
+    card.classList.toggle('open');
+  }
+
+  // Highlight sidebar link on scroll
+  const sections = document.querySelectorAll('[id]');
+  const sidebarLinks = document.querySelectorAll('.sidebar-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    sidebarLinks.forEach(a => {
+      a.classList.toggle('current', a.getAttribute('href') === '#' + current);
+    });
+  });
+
+  // Area tab highlight
+  const areaTabs = document.querySelectorAll('.area-tab');
+  const areaBlocks = document.querySelectorAll('.area-block');
+  window.addEventListener('scroll', () => {
+    areaBlocks.forEach((block, i) => {
+      const rect = block.getBoundingClientRect();
+      if (rect.top <= 120 && rect.bottom >= 120) {
+        areaTabs.forEach(t => t.classList.remove('active'));
+        if (areaTabs[i]) areaTabs[i].classList.add('active');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
