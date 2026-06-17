@@ -1,0 +1,11 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "routes": [
+    { "src": "/walkthrough", "dest": "/index.html" },
+    { "src": "/weapons", "dest": "/index.html" },
+    { "src": "/postgame", "dest": "/index.html" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "status": 404, "dest": "/index.html" }
+  ]
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://re9-guide-teal.vercel.app/sitemap.xml
