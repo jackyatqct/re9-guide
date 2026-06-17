@@ -1,11 +1,18 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "routes": [
-    { "src": "/walkthrough", "dest": "/index.html" },
-    { "src": "/weapons", "dest": "/index.html" },
-    { "src": "/postgame", "dest": "/index.html" },
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "status": 404, "dest": "/index.html" }
+  "rewrites": [
+    { "source": "/walkthrough", "destination": "/index.html" },
+    { "source": "/weapons", "destination": "/index.html" },
+    { "source": "/postgame", "destination": "/index.html" }
+  ],
+  "redirects": [],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" }
+      ]
+    }
   ]
 }
